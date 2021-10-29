@@ -8,8 +8,15 @@ classes:
 	5. game engine	{objects and data: pacman, ghost, walls, breadcrumbs, keep all locations(4)
 					func: init(),run(),pause(), metAGhost()}
 	6. menu			{menu like duh!}
-	7. point		{x,y}
+	7. point		{x,y, movement()}
 
-	notes:
-	game engine :
-		
+	tasks:
+		Sagi:
+			- class:: point
+			- class:: walls
+			- class:: bread
+		Idan:
+			- class:: pacman
+			- class:: ghost
+		pair:
+			- class:: game engine
