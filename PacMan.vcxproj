@@ -140,8 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bread.cpp" />
+    <ClCompile Include="Ghost.cpp" />
     <ClCompile Include="io_utils.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Pacman.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Walls.cpp" />
   </ItemGroup>
@@ -150,6 +152,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bread.h" />
+    <ClInclude Include="Ghost.h" />
+    <ClInclude Include="Pacman.h" />
     <ClInclude Include="Walls.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="io_utils.h" />

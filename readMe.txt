@@ -2,7 +2,7 @@ PacMan!!!!
 
 classes:
 	4. walls		{point, shape, color}
-	1. pacman		{point, shape, movement vector, color, didIEatIt()}
+	1. pacman		{point, shape, movement vector, color, ctor(), setPacman(), getPacman()}
 	2. ghost		{point, shape, movement vector, color, printLastShape()}
 	3. breadcrumbs	{point, shape, color}
 	5. game engine	{objects and data: pacman, ghost, walls, breadcrumbs, keep all locations(4)

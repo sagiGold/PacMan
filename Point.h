@@ -3,9 +3,16 @@
 
 #include "io_utils.h"
 
+enum Move_Vector { UP, DOWN, LEFT, RIGHT, STAY };
+
+
 class Point {
-	int x = 1, y = 1; // Need to reboot starting point for each character (PacMan / Ghosts)
+	int x, y; // Need to reboot starting point for each character (PacMan / Ghosts)
 public:
+	Point();
+	void setPoint(int x, int y);
+	int getX();
+	int getY();
 	void draw(char ch);
 	void move();
 	void move(int direction);
