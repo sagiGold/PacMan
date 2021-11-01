@@ -10,6 +10,8 @@ class Point {
 	int x, y; // Need to reboot starting point for each character (PacMan / Ghosts)
 public:
 	Point();
+	Point(int x, int y);
+
 	void setPoint(int x, int y);
 	int getX();
 	int getY();
