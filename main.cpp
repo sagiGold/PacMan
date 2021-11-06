@@ -1,7 +1,8 @@
-#include <iostream>
+﻿#include <iostream>
+#include "io_utils.h"
 
 using namespace std;
 
 void main() {
-	cout << "heloo";//bla
+	printNewGame();
 }
