@@ -11,6 +11,7 @@ using namespace std;
 
 
 int main() {
+	printNewGame();
 	Point p(2,5);
 	int s;
 	Move_Vector dir = STAY;
@@ -29,7 +30,6 @@ int main() {
 			case 'w':
 				dir = UP;
 				break;
-
 			case 'a':
 				dir = LEFT;
 				break;

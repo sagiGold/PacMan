@@ -24,6 +24,7 @@ class Pacman{
 		Color getColor();
 
 		//methods
+		void setDirection(char c);
 		void movePacman();
 		void printPacman();
 		

@@ -42,6 +42,10 @@ Color Pacman::getColor() {
 
 //--------Methods------------------------------------//
 
+void Pacman::setDirection(char c) {
+
+}
+
 void Pacman::movePacman() {
 	if (v != STAY) {
 		point.draw(' ');
