@@ -12,6 +12,7 @@ public:
 	Ghost(Point _p);
 	void setGhost(Point p);
 	Point getGhost();
+	void moveGhost();
 };
 
 #endif

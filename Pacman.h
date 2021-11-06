@@ -11,9 +11,24 @@ class Pacman{
 	Move_Vector v;
 
 	public:
+		//constructors
+		Pacman();
 		Pacman(Point _p);
+		~Pacman();
+		
+		//setters and getters
 		void setPacman(Point p);
+		void setVector(Move_Vector dir);
 		Point getPacman();
+		char getShape();
+		Color getColor();
+
+		//methods
+		void movePacman();
+		void printPacman();
+		
+	
+
 };
 
 #endif 

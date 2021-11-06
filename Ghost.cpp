@@ -14,3 +14,7 @@ void Ghost::setGhost(Point p) {
 Point Ghost::getGhost() {
 	return point;
 }
+
+void moveGhost() {
+
+}
