@@ -3,7 +3,7 @@
 #include "Point.h"
 #include "Color.h"
 class Ghost {
-	Point point;
+	Point curr_point;
 	Color color;
 	char shape;
 	Move_Vector v;

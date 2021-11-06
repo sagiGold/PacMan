@@ -2,14 +2,14 @@
 
 //--------Constructors---------------------------------//
 Pacman::Pacman() {
-	point.setPoint(5,5);
+	curr_point.setPoint(5,5);
 	color = WHITE;
 	shape = '@';
 	v = STAY;
 }
 
 Pacman::Pacman(Point _p) {
-	point.setPoint(_p.getX(), _p.getY());
+	curr_point.setPoint(_p.getX(), _p.getY());
 	color = WHITE;
 	shape = '@';
 	v = STAY;
@@ -20,7 +20,7 @@ Pacman::~Pacman() {
 
 //--------Getters and Setters---------------------------//
 void Pacman::setPacman(Point p) {
-	point.setPoint(p.getX(), p.getY());
+	curr_point.setPoint(p.getX(), p.getY());
 }
 
 void Pacman::setVector(Move_Vector dir) {
@@ -28,7 +28,7 @@ void Pacman::setVector(Move_Vector dir) {
 }
 
 Point Pacman::getPacman() {
-	return point;
+	return curr_point;
 }
 
 char Pacman::getShape() {
@@ -44,12 +44,16 @@ Color Pacman::getColor() {
 
 void Pacman::movePacman() {
 	if (v != STAY) {
-		point.draw(' ');
-		point.move(v);
+		curr_point.draw(' ');
+		curr_point.move(v);
 		printPacman();
 	}
 }
 
 void Pacman::printPacman() {
-	point.draw(shape);
+	curr_point.draw(shape);
+}
+
+int Pacman::collision() {
+
 }

@@ -5,7 +5,7 @@
 
 
 class Pacman{
-	Point point;
+	Point curr_point;
 	Color color;
 	char shape;
 	Move_Vector v;
@@ -27,7 +27,9 @@ class Pacman{
 		void movePacman();
 		void printPacman();
 		
-	
+	private:
+		Point next_point;
+		int collision();
 
 };
 

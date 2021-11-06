@@ -15,4 +15,6 @@ void hideCursor();
 void clear_screen();
 void printNewGame();
 
+
+
 #endif
