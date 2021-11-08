@@ -3,7 +3,7 @@
 
 #include "io_utils.h"
 
-enum Move_Vector { UP, DOWN, LEFT, RIGHT, STAY };
+enum Move_Vector { UP , DOWN , LEFT , RIGHT , STAY  };
 
 
 class Point {
@@ -18,6 +18,8 @@ public:
 	void draw(char ch);
 	void move();
 	void move(int direction);
+
+	char readPoint();
 };
 
 #endif

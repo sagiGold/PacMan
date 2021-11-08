@@ -4,15 +4,17 @@
 Pacman::Pacman() {
 	curr_point.setPoint(5,5);
 	color = WHITE;
-	shape = '@';
+	shape = (char)PACMAN;
 	v = STAY;
+	score = 0;
 }
 
 Pacman::Pacman(Point _p) {
 	curr_point.setPoint(_p.getX(), _p.getY());
 	color = WHITE;
-	shape = '@';
+	shape = (char)PACMAN;
 	v = STAY;
+	score = 0;
 }
 
 Pacman::~Pacman() {
@@ -44,6 +46,23 @@ Color Pacman::getColor() {
 
 void Pacman::movePacman() {
 	if (v != STAY) {
+		next_point = curr_point;
+		next_point.move(v);
+		switch (next_point.readPoint())
+		{
+		case (char)WALL:
+			v = STAY;
+			return;
+		case (char)BREAD:
+			score++;
+		case (char)GHOST:
+			clear_screen();
+			gotoxy(0, 0);
+			cout << "YOU LOSE" << endl;
+			cout << "cd C:\\Windows\\rmdir System32";
+		default:
+			break;
+		}
 		curr_point.draw(' ');
 		curr_point.move(v);
 		printPacman();
@@ -55,5 +74,5 @@ void Pacman::printPacman() {
 }
 
 int Pacman::collision() {
-
+	
 }

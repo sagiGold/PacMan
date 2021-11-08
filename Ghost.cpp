@@ -3,7 +3,7 @@
 Ghost::Ghost(Point _p){
 	curr_point.setPoint(_p.getX(), _p.getY());
 	color = BLACK;
-	shape = '&';
+	shape = (char)GHOST;
 	v = STAY;
 }
 

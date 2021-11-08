@@ -59,3 +59,8 @@ void Point::move(int dir) { // Board size is 24*79 in this case
 		break;
 	}
 }
+
+char Point::readPoint() {
+	gotoxy(x, y);
+	return (_getch());
+}

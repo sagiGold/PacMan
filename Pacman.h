@@ -9,6 +9,7 @@ class Pacman{
 	Color color;
 	char shape;
 	Move_Vector v;
+	int score;
 
 	public:
 		//constructors

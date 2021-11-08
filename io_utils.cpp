@@ -1,6 +1,5 @@
 ﻿#include "io_utils.h"
-#define W (char)178<<
-#define O (char)250<<
+
 
 void gotoxy(int x, int y)
 {
