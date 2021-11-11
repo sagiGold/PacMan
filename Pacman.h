@@ -2,6 +2,7 @@
 #define PACMAN_H_
 #include "Point.h"
 #include "Color.h"
+#include "Board.h"
 
 
 class Pacman{
@@ -25,7 +26,7 @@ class Pacman{
 		Color getColor();
 
 		//methods
-		void movePacman();
+		void movePacman(Board &board);
 		void printPacman();
 		
 	private:

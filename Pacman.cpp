@@ -44,27 +44,28 @@ Color Pacman::getColor() {
 
 //--------Methods------------------------------------//
 
-void Pacman::movePacman() {
+void Pacman::movePacman(Board &board) {
 	if (v != STAY) {
 		next_point = curr_point;
 		next_point.move(v);
-		switch (next_point.readPoint())
-		{
-		case (char)WALL:
-			v = STAY;
-			return;
-		case (char)BREAD:
-			score++;
-		case (char)GHOST:
-			clear_screen();
-			gotoxy(0, 0);
-			cout << "YOU LOSE" << endl;
-			cout << "cd C:\\Windows\\rmdir System32";
-		default:
-			break;
+		unsigned char readVal = board.getCell(next_point);
+		switch (readVal){
+			case (unsigned char)WALL:
+				v = STAY;
+				return;
+			case (unsigned char)BREAD:
+				score++;
+				break;
+			case (unsigned char)GHOST:
+				clear_screen();
+				gotoxy(0, 0);
+				cout << "YOU LOSE" << endl;
+			default:
+				break;
 		}
 		curr_point.draw(' ');
-		curr_point.move(v);
+		board.editCell(curr_point, ' ');
+		curr_point = next_point;
 		printPacman();
 	}
 }
@@ -73,6 +74,6 @@ void Pacman::printPacman() {
 	curr_point.draw(shape);
 }
 
-int Pacman::collision() {
-	
-}
+//int Pacman::collision() {
+//	
+//}

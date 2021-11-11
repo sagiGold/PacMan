@@ -6,8 +6,8 @@
 #include <windows.h>
 #include <conio.h>
 
-#define W (char)178<<	//wall
-#define O (char)250<<	//bread
+#define w (char)178<<	//wall
+#define o (char)250<<	//bread
 
 using namespace std;
 
