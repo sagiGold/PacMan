@@ -35,29 +35,18 @@ Color Pacman::getColor() {return color;}
 
 void Pacman::moveVector(Pacman& pacman, Move_Vector& dir) {
 	int s;
-
 	if (_kbhit()) {
 		s = _getch();
-		switch (s)
-		{
-		case 'w':
+		if (s == 'w' || s== 'W')
 			dir = UP;
-			break;
-		case 'a':
+		if (s == 'a' || s == 'A')
 			dir = LEFT;
-			break;
-		case 'd':
+		if (s == 'd' || s == 'D')
 			dir = RIGHT;
-			break;
-		case 's':
+		if (s == 's' || s == 'S')
 			dir = DOWN;
-			break;
-		case ' ':
+		if (s == ' ')
 			dir = STAY;
-			break;
-		default:
-			break;
-		}
 		pacman.setVector(dir);
 	}
 }

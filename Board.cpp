@@ -4,11 +4,11 @@ void Board::printBoard() {
 	for (int i = 0; i < HEIGHT; i++) {
 		for (int j = 0; j < WIDTH; j++) {
 			if (board[i][j] == (unsigned char)178) {
-				setTextColor(Color::LIGHTGREY);
+				setTextColor(Color::LIGHTCYAN);
 				cout << board[i][j];
 			}
 			else if (board[i][j] == (unsigned char)250) {
-				setTextColor(Color::LIGHTCYAN);
+				setTextColor(Color::LIGHTGREY);
 				cout << board[i][j];
 			}
 			else {

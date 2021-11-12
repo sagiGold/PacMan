@@ -35,7 +35,7 @@ void Ghost::moveGhost(Board& board) { // cancel blackHole passing option
 		v = STAY;
 		return;
 	case (unsigned char)BREAD:
-		setTextColor(Color::LIGHTCYAN);
+		setTextColor(Color::LIGHTGREY);
 		curr_point.draw((unsigned char)BREAD);
 		break;
 	case (unsigned char)PACMAN:
