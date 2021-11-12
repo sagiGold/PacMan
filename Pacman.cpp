@@ -2,54 +2,72 @@
 
 //--------Constructors---------------------------------//
 Pacman::Pacman() {
-	curr_point.setPoint(5,5);
-	color = WHITE;
+	curr_point.setPoint(5,6);
 	shape = (char)PACMAN;
+	color = YELLOW;
 	v = STAY;
 	score = 0;
 }
 
 Pacman::Pacman(Point _p) {
 	curr_point.setPoint(_p.getX(), _p.getY());
-	color = WHITE;
 	shape = (char)PACMAN;
+	color = YELLOW;
 	v = STAY;
 	score = 0;
 }
 
-Pacman::~Pacman() {
-}
+Pacman::~Pacman() { delete this; }
 
 //--------Getters and Setters---------------------------//
-void Pacman::setPacman(Point p) {
-	curr_point.setPoint(p.getX(), p.getY());
-}
+void Pacman::setPacman(Point p) {curr_point.setPoint(p.getX(), p.getY());}
 
-void Pacman::setVector(Move_Vector dir) {
-	v = dir;
-}
+void Pacman::setVector(Move_Vector dir) {v = dir;}
 
-Point Pacman::getPacman() {
-	return curr_point;
-}
+Point Pacman::getPacman() {return curr_point;}
 
-char Pacman::getShape() {
-	return shape;
-}
+char Pacman::getShape() {return shape;}
 
-Color Pacman::getColor() {
-	return color;
-}
+Color Pacman::getColor() {return color;}
 
 
 //--------Methods------------------------------------//
+
+void Pacman::moveVector(Pacman& pacman, Move_Vector& dir) {
+	int s;
+
+	if (_kbhit()) {
+		s = _getch();
+		switch (s)
+		{
+		case 'w':
+			dir = UP;
+			break;
+		case 'a':
+			dir = LEFT;
+			break;
+		case 'd':
+			dir = RIGHT;
+			break;
+		case 's':
+			dir = DOWN;
+			break;
+		case ' ':
+			dir = STAY;
+			break;
+		default:
+			break;
+		}
+		pacman.setVector(dir);
+	}
+}
 
 void Pacman::movePacman(Board &board) {
 	if (v != STAY) {
 		next_point = curr_point;
 		next_point.move(v);
 		unsigned char readVal = board.getCell(next_point);
-		switch (readVal){
+		switch (readVal) {
 			case (unsigned char)WALL:
 				v = STAY;
 				return;
@@ -59,7 +77,8 @@ void Pacman::movePacman(Board &board) {
 			case (unsigned char)GHOST:
 				clear_screen();
 				gotoxy(0, 0);
-				cout << "YOU LOSE" << endl;
+				cout << "YOU LOSE" << endl; 
+				// force game over
 			default:
 				break;
 		}
@@ -71,8 +90,16 @@ void Pacman::movePacman(Board &board) {
 }
 
 void Pacman::printPacman() {
+	setTextColor(color);
 	curr_point.draw(shape);
 }
+
+void Pacman::printScore() {
+	setTextColor(Color::WHITE);
+	gotoxy(0, HEIGHT + 1);
+	cout << "Current Score:" << score << endl;
+}
+
 
 //int Pacman::collision() {
 //	

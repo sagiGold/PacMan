@@ -2,6 +2,8 @@
 #define GHOST_H_
 #include "Point.h"
 #include "Color.h"
+#include "Board.h"
+
 class Ghost {
 	Point curr_point;
 	Color color;
@@ -9,10 +11,21 @@ class Ghost {
 	Move_Vector v;
 
 public:
-	Ghost(Point _p);
+	//constructors
+	Ghost();
+	Ghost(Point _p, Color c);
+	~Ghost();
+
+	//setters and getters
 	void setGhost(Point p);
 	Point getGhost();
-	void moveGhost();
+
+	//methods
+	void moveGhost(Board& board);
+	void printGhost();
+
+private:
+	Point next_point;
 };
 
 #endif

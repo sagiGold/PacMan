@@ -4,8 +4,7 @@
 #include "Color.h"
 #include "Board.h"
 
-
-class Pacman{
+class Pacman {
 	Point curr_point;
 	Color color;
 	char shape;
@@ -21,18 +20,19 @@ class Pacman{
 		//setters and getters
 		void setPacman(Point p);
 		void setVector(Move_Vector dir);
-		Point getPacman();
-		char getShape();
-		Color getColor();
+		Point getPacman(); // no need
+		char getShape(); 
+		Color getColor(); // no need
 
 		//methods
 		void movePacman(Board &board);
 		void printPacman();
-		
+		void moveVector(Pacman &pacman, Move_Vector& dir);
+		void printScore();
+
 	private:
 		Point next_point;
-		int collision();
-
+		//int collision();
 };
 
 #endif 
