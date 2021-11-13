@@ -17,12 +17,18 @@ void test1() {
 	Ghost* ghost1 = new Ghost(Point(15, 5), Color(RED));
 	Ghost* ghost2 = new Ghost(Point(14, 5), Color(MAGENTA));
 	
-	board.printBoard(); // Add vertical tunnel !
+	board.printBoard();
 	pacman->printPacman();
 	ghost1->printGhost();
 	ghost2->printGhost();
 
-	while (1) { // Don't forget to change Keys b4 serving project !!
+	/*TO DO:
+	* Add vertical tunnel
+	* Change Keys b4 serving project !!
+	* Add non-color option in menu,  indicate in readme.txt file all bonus additions
+	*/
+
+	while (1) {
 		pacman->isGameOver(ghost1, ghost2, board); // move it to a different class.
 		pacman->moveVector(dir);
 		pacman->movePacman(board);
