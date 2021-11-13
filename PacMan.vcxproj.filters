@@ -36,10 +36,10 @@
     <ClCompile Include="Ghost.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game_Logic.cpp">
+    <ClCompile Include="Tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tests.cpp">
+    <ClCompile Include="Game_Logic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
