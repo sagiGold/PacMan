@@ -15,7 +15,7 @@ void test1() {
 	Move_Vector dir = STAY;
 	Pacman* pacman = new Pacman();
 	Ghost* ghost1 = new Ghost(Point(15, 5), Color(RED));
-	Ghost* ghost2 = new Ghost(Point(14, 5), Color(MAGENTA));
+	Ghost* ghost2 = new Ghost(Point(16, 5), Color(MAGENTA));
 	
 	board.printBoard();
 	pacman->printPacman();
@@ -26,6 +26,7 @@ void test1() {
 	* Add vertical tunnel
 	* Change Keys b4 serving project !!
 	* Add non-color option in menu,  indicate in readme.txt file all bonus additions
+	* Pause by pressing ESC
 	*/
 
 	while (1) {
@@ -37,7 +38,7 @@ void test1() {
 			ghost2->moveGhost(board);
 		}
 		slowTheGhost++;
-		pacman->printData(); 
+		pacman->printData();
 		Sleep(100);
 	}
 }

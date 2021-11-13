@@ -2,7 +2,7 @@
 
 //--------Constructors---------------------------------//
 Pacman::Pacman() {
-	curr_point.setPoint(5,6);
+	curr_point.setPoint(1,6);
 	shape = (char)PACMAN;
 	color = YELLOW;
 	v = STAY;
@@ -105,7 +105,7 @@ void Pacman::isGameOver(Ghost* g1, Ghost* g2,Board& board) {
 			cout << "Game Over :(" << endl;
 		}
 		setPacman(Point(5, 6));
-		g1->setGhost(Point(14, 6), board);
+		g1->setGhost(Point(16, 6), board);
 		g2->setGhost(Point(15, 6), board);
 	}
 }

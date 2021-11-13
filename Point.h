@@ -3,7 +3,7 @@
 
 #include "io_utils.h"
 
-enum Move_Vector { UP , DOWN , LEFT , RIGHT , STAY  };
+enum Move_Vector { UP , DOWN , LEFT , RIGHT , STAY };
 
 class Point {
 	int x, y; // Need to reboot starting point for each character (PacMan / Ghost)

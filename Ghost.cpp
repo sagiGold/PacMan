@@ -3,7 +3,7 @@
 //--------Constructors---------------------------------//
 
 Ghost::Ghost() {
-	curr_point.setPoint(15,5);
+	curr_point.setPoint(16,5);
 	color = RED;
 	shape = (char)GHOST;
 	v = STAY;
