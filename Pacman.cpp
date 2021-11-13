@@ -96,7 +96,7 @@ void Pacman::printData() {
 	cout << "Remaining Lives: " << life << endl;
 }
 
-void Pacman::isGameOver(Ghost* g1, Ghost* g2) {  
+void Pacman::isGameOver(Ghost* g1, Ghost* g2,Board& board) {  
 	if (curr_point.isSamePoint(g1->getGhost()) || curr_point.isSamePoint(g2->getGhost())) {
 		life--;
 		if (life == 0) {
@@ -105,6 +105,8 @@ void Pacman::isGameOver(Ghost* g1, Ghost* g2) {
 			cout << "Game Over :(" << endl;
 		}
 		setPacman(Point(5, 6));
+		g1->setGhost(Point(14, 6), board);
+		g2->setGhost(Point(15, 6), board);
 	}
 }
 

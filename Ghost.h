@@ -17,7 +17,7 @@ public:
 	~Ghost();
 
 	//setters and getters
-	void setGhost(Point p);
+	void setGhost(Point p, Board& board);
 	Point getGhost();
 
 	//methods

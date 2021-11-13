@@ -20,7 +20,19 @@ Ghost::~Ghost() { delete this; }
 
 //--------Getters and Setters---------------------------//
 
-void Ghost::setGhost(Point p) {curr_point.setPoint(p.getX(), p.getY());}
+void Ghost::setGhost(Point p, Board& board) {
+	unsigned char readVal = board.getCell(curr_point);
+	switch (readVal) {
+		case (unsigned char)BREAD:
+			setTextColor(Color::LIGHTGREY);
+			curr_point.draw((unsigned char)BREAD);
+			break;
+		default:
+			curr_point.draw(' ');
+			break;
+	}
+	curr_point.setPoint(p.getX(), p.getY());
+}
 
 Point Ghost::getGhost() {return curr_point;}
 
