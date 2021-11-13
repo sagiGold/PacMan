@@ -147,7 +147,7 @@
     <ClCompile Include="Pacman.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Tests.cpp" />
-    <ClCompile Include="Walls.cpp" />
+    <ClCompile Include="Board.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
@@ -157,7 +157,7 @@
     <ClInclude Include="Game_Logic.h" />
     <ClInclude Include="Ghost.h" />
     <ClInclude Include="Pacman.h" />
-    <ClInclude Include="Walls.h" />
+    <ClInclude Include="Board.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="io_utils.h" />
     <ClInclude Include="Point.h" />

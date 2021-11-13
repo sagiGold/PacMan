@@ -18,7 +18,7 @@ enum Color
 	LIGHTRED = 12,
 	LIGHTMAGENTA = 13,
 	YELLOW = 14,
-	WHITE = 15
+	WHITE = 15,
 };
 
 #endif

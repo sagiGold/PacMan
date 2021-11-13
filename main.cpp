@@ -3,6 +3,7 @@
 
 using namespace std;
 
-void main() {
-	printNewGame();
-}
+// Don't forget to change Keys b4 serving project !!
+//void main() {
+//	printNewGame();
+//}

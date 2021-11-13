@@ -31,31 +31,31 @@ void Point::move() {
 	move(dir);
 }
 
-void Point::move(int dir) { // Board size is 24*79 in this case
+void Point::move(int dir) {
 	switch (dir) {
 	case 0: // UP
 		--y;
-		if (y < 1) {
-			y = 24;
-		}
+		if (y < 2)
+			y = 11;
 		break;
 	case 1: // DOWN
 		++y;
-		if (y > 24) {
+		if (y > 11)
 			y = 1;
-		}
 		break;
 	case 2: // LEFT
 		--x;
-		if (x < 1) {
-			x = 79;
-		}
+		if (x < 2)
+			x = 32;
 		break;
 	case 3: // RIGHT
 		++x;
-		if (x > 79) {
+		if (x > 32)
 			x = 1;
-		}
 		break;
 	}
+}
+
+bool Point::isSamePoint(const Point p1) {
+	return (x == p1.x) && (y == p1.y);
 }
