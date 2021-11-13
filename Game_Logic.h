@@ -11,6 +11,7 @@ void runGame();
 char menu();
 void run();
 void printInstractions();
+void isGameOver(Pacman* pacman, Ghost* g1, Ghost* g2, Board& board);
 
 
 //class Game_Logic

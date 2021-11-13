@@ -1,11 +1,12 @@
 #include "Game_Logic.h"
 
 //Game_Logic::Game_Logic() {
-//s
+//
 //}
 
 void runGame() {
-	/*pacman.setPacman();
+	/* to do
+	pacman.setPacman();
 	ghost1.setGhost(Point(15, 5), Color(RED));
 	ghost2.setGhost(Point(15, 5), Color(RED));*/
 	char choice = menu();
@@ -44,10 +45,30 @@ void run()
 			ghost1->moveGhost(board);
 			ghost2->moveGhost(board);
 		}
-		pacman->isGameOver(ghost1, ghost2, board); // move it to a different class.
+		isGameOver(pacman, ghost1, ghost2, board); // move it to a different class.
 		slowTheGhost++;
 		pacman->printData();
 		Sleep(100);
+	}
+}
+
+void isGameOver(Pacman* pacman, Ghost* g1, Ghost* g2, Board& board) {
+	if (pacman->getPacman().isSamePoint(g1->getGhost()) || pacman->getPacman().isSamePoint(g2->getGhost())) {
+		pacman->setLife(pacman->getLife()-1);
+		if (pacman->getLife() == 0) {
+			clear_screen();
+			gotoxy(0, 0);
+			setTextColor(Color(WHITE));
+			cout << "Game Over :(" << endl << "Press any key to continue..." << endl;
+			char garbage;
+			cin >> garbage;
+			system("cls");
+			// call on distructor for pacman&ghosts ?
+			runGame();
+		}
+		pacman->setPacman(Point(5, 6));
+		g1->setGhost(Point(16, 6), board);
+		g2->setGhost(Point(15, 6), board);
 	}
 }
 
@@ -81,7 +102,7 @@ char menu()
 }
 
 void printInstractions() {
-	cout << "Welcome to Pacman !" << endl << "Your goal is to move the pacman on screen and eats the breadcrumbs." << endl
+	cout << "Welcome to Pacman !" << endl << "Your goal is to move the pacman on the screen and eat the breadcrumbs." << endl
 		<< "Each eaten breadcrumb equals a point to be earned." << endl
 		<< "Once all breadcrumbs on screen are eaten you win the game :)" << endl << endl
 		<< "Keys for the game:" << endl

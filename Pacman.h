@@ -22,7 +22,9 @@ class Pacman {
 		//setters and getters
 		void setPacman(Point p);
 		void setVector(Move_Vector dir);
-		Point getPacman(); // no need
+		void setLife(int _life);
+		int getLife();
+		Point getPacman(); 
 		char getShape(); 
 		Color getColor(); // no need
 
@@ -31,7 +33,7 @@ class Pacman {
 		void printPacman();
 		void moveVector(Move_Vector& dir);
 		void printData();
-		void isGameOver(Ghost* g1, Ghost* g2, Board& board);
+		//void isGameOver(Ghost* g1, Ghost* g2, Board& board);
 
 	private:
 		Point next_point;

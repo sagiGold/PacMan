@@ -30,6 +30,10 @@ void Pacman::setPacman(Point p) {
 
 void Pacman::setVector(Move_Vector dir) {v = dir;}
 
+void Pacman::setLife(int _life) { life = _life; }
+
+int Pacman::getLife() { return life; }
+
 Point Pacman::getPacman() {return curr_point;}
 
 char Pacman::getShape() {return shape;}
@@ -96,20 +100,21 @@ void Pacman::printData() {
 	cout << "Remaining Lives: " << life << endl;
 }
 
-void Pacman::isGameOver(Ghost* g1, Ghost* g2,Board& board) {  
-	if (curr_point.isSamePoint(g1->getGhost()) || curr_point.isSamePoint(g2->getGhost())) {
-		life--;
-		if (life == 0) {
-			clear_screen();
-			gotoxy(0, 0);
-			setTextColor(Color(WHITE));
-			cout << "Game Over :(" << endl;
-		}
-		setPacman(Point(5, 6));
-		g1->setGhost(Point(16, 6), board);
-		g2->setGhost(Point(15, 6), board);
-	}
-}
+//void Pacman::isGameOver(Ghost* g1, Ghost* g2,Board& board) {  
+//	if (curr_point.isSamePoint(g1->getGhost()) || curr_point.isSamePoint(g2->getGhost())) {
+//		life--;
+//		if (life == 0) {
+//			clear_screen();
+//			gotoxy(0, 0);
+//			setTextColor(Color(WHITE));
+//			cout << "Game Over :(" << endl;
+//			// print menu again
+//		}
+//		setPacman(Point(5, 6));
+//		g1->setGhost(Point(16, 6), board);
+//		g2->setGhost(Point(15, 6), board);
+//	}
+//}
 
 
 //int Pacman::collision() {
