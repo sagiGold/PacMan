@@ -30,13 +30,13 @@ void test1() {
 	*/
 
 	while (1) {
-		pacman->isGameOver(ghost1, ghost2, board); // move it to a different class.
 		pacman->moveVector(dir);
 		pacman->movePacman(board);
 		if (slowTheGhost % 2 == 0) {
 			ghost1->moveGhost(board);
 			ghost2->moveGhost(board);
 		}
+		pacman->isGameOver(ghost1, ghost2, board); // move it to a different class.
 		slowTheGhost++;
 		pacman->printData();
 		Sleep(100);

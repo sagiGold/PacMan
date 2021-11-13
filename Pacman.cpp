@@ -102,6 +102,7 @@ void Pacman::isGameOver(Ghost* g1, Ghost* g2,Board& board) {
 		if (life == 0) {
 			clear_screen();
 			gotoxy(0, 0);
+			setTextColor(Color(WHITE));
 			cout << "Game Over :(" << endl;
 		}
 		setPacman(Point(5, 6));
