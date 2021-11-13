@@ -6,11 +6,11 @@
 #include "Ghost.h"
 
 using namespace std;
-
 #define S (char)178
 
 void test1() {
 
+	int slowTheGhost = 1;
 	Board board;
 	Move_Vector dir = STAY;
 	Pacman* pacman = new Pacman();
@@ -22,14 +22,16 @@ void test1() {
 	ghost1->printGhost();
 	ghost2->printGhost();
 
-	while (1) {
-		//if (pacman->getPacman().getX == ghost1->getGhost().getX)
-		//pacman->isGameOver(pacman, ghost1, ghost2);
-		pacman->moveVector(*pacman, dir);
-		ghost1->moveGhost(board);
-		ghost2->moveGhost(board);
+	while (1) { // Don't forget to change Keys b4 serving project !!
+		pacman->isGameOver(ghost1, ghost2); // move it to a different class.
+		pacman->moveVector(dir);
 		pacman->movePacman(board);
-		pacman->printScore();
+		if (slowTheGhost % 2 == 0) {
+			ghost1->moveGhost(board);
+			ghost2->moveGhost(board);
+		}
+		slowTheGhost++;
+		pacman->printData(); 
 		Sleep(100);
 	}
 }

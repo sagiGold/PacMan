@@ -7,6 +7,7 @@ Pacman::Pacman() {
 	color = YELLOW;
 	v = STAY;
 	score = 0;
+	life = 3;
 }
 
 Pacman::Pacman(Point _p) {
@@ -15,12 +16,17 @@ Pacman::Pacman(Point _p) {
 	color = YELLOW;
 	v = STAY;
 	score = 0;
+	life = 3;
 }
 
 Pacman::~Pacman() { delete this; }
 
 //--------Getters and Setters---------------------------//
-void Pacman::setPacman(Point p) {curr_point.setPoint(p.getX(), p.getY());}
+void Pacman::setPacman(Point p) {
+	curr_point.setPoint(p.getX(), p.getY());
+	v = STAY;
+	printPacman();
+}
 
 void Pacman::setVector(Move_Vector dir) {v = dir;}
 
@@ -33,7 +39,7 @@ Color Pacman::getColor() {return color;}
 
 //--------Methods------------------------------------//
 
-void Pacman::moveVector(Pacman& pacman, Move_Vector& dir) {
+void Pacman::moveVector(Move_Vector& dir) {
 	int s;
 	if (_kbhit()) {
 		s = _getch();
@@ -47,7 +53,7 @@ void Pacman::moveVector(Pacman& pacman, Move_Vector& dir) {
 			dir = DOWN;
 		if (s == ' ')
 			dir = STAY;
-		pacman.setVector(dir);
+		setVector(dir);
 	}
 }
 
@@ -83,10 +89,23 @@ void Pacman::printPacman() {
 	curr_point.draw(shape);
 }
 
-void Pacman::printScore() {
+void Pacman::printData() {
 	setTextColor(Color::WHITE);
 	gotoxy(0, HEIGHT + 1);
-	cout << "Current Score:" << score << endl;
+	cout << "Current Score: " << score << endl;
+	cout << "Remaining Lives: " << life << endl;
+}
+
+void Pacman::isGameOver(Ghost* g1, Ghost* g2) {  
+	if (curr_point.isSamePoint(g1->getGhost()) || curr_point.isSamePoint(g2->getGhost())) {
+		life--;
+		if (life == 0) {
+			clear_screen();
+			gotoxy(0, 0);
+			cout << "Game Over :(" << endl;
+		}
+		setPacman(Point(5, 6));
+	}
 }
 
 

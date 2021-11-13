@@ -53,3 +53,7 @@ void Point::move(int dir) {
 		break;
 	}
 }
+
+bool Point::isSamePoint(const Point p1) {
+	return (x == p1.x) && (y == p1.y);
+}

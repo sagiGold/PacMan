@@ -3,6 +3,7 @@
 #include "Point.h"
 #include "Color.h"
 #include "Board.h"
+#include "Ghost.h"
 
 class Pacman {
 	Point curr_point;
@@ -10,6 +11,7 @@ class Pacman {
 	char shape;
 	Move_Vector v;
 	int score;
+	int life;
 
 	public:
 		//constructors
@@ -27,8 +29,9 @@ class Pacman {
 		//methods
 		void movePacman(Board &board);
 		void printPacman();
-		void moveVector(Pacman &pacman, Move_Vector& dir);
-		void printScore();
+		void moveVector(Move_Vector& dir);
+		void printData();
+		void isGameOver(Ghost* g1, Ghost* g2);
 
 	private:
 		Point next_point;
