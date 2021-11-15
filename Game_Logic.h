@@ -8,12 +8,16 @@
 #include "io_utils.h"
 
 
+
 class Game_Logic
 {
 private:
 	Board board;
 	Pacman pacman;
 	Ghost ghost1, ghost2;
+	bool black_and_white;
+
+	/*Colour _colour;*/
 
 	public:
 		//constructors

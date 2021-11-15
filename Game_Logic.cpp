@@ -10,22 +10,26 @@ Game_Logic::Game_Logic() {
 	ghost1.setGhost(Point(16, 5), board);
 	ghost2.setGhost(Point(15, 5), board);
 
-	ghost2.setColor(MAGENTA);
 
 }
 
 void Game_Logic::runGame() {
-	/* to do
-	pacman.setPacman();
-	ghost1.setGhost(Point(15, 5), Color(RED));
-	ghost2.setGhost(Point(15, 5), Color(RED));*/
 	char choice = menu();
+
 	switch (choice) {
 	case '1':
+		black_and_white = false;
+		ghost1.setColor(RED);
+		ghost2.setColor(MAGENTA);
+		pacman.setColor(YELLOW);
 		run();
 		break;
 	case '2':
-		//runNoColor ?
+		black_and_white = true;
+		ghost1.setColor(WHITE);
+		ghost2.setColor(WHITE);
+		pacman.setColor(WHITE);
+		run();
 		break;
 	case '9':
 		cout << "Good Bye !" << endl;
@@ -43,7 +47,7 @@ void Game_Logic::run()
 
 	bool flag = true;
 	bool didILose = false;
-	board.printBoard();
+	board.printBoard(black_and_white);
 	pacman.printPacman();
 	ghost1.printGhost();
 	ghost2.printGhost();
@@ -91,13 +95,12 @@ void Game_Logic::winGame(){
 		  \   /| |  | | |  | |   \ \/  \/ /   | | | . ` |
 		   | | | |__| | |__| |    \  /\  /   _| |_| |\  |
 		   |_|  \____/ \____/      \/  \/   |_____|_| \_|*/
-	string s = "__     ______  _    _  __          _______ _   _\n \\ \\   / / __ \\| |  | | \\ \\        / /_   _| \\ | |\n  \\ \\_/ / |  | | |  | |  \\ \\  /\\  / /  | | |  \\| |\n   \\   /| |  | | |  | |   \\ \\/  \\/ /   | | | . ` |\n    | | | |__| | |__| |    \\  /\\  /   _| |_| |\\  |\n    |_|  \\____/ \\____/      \\/  \\/   |_____|_| \\_|\n\npress Enter to continue";
+	string s = " __     ______  _    _  __          _______ _   _\n \\ \\   / / __ \\| |  | | \\ \\        / /_   _| \\ | |\n  \\ \\_/ / |  | | |  | |  \\ \\  /\\  / /  | | |  \\| |\n   \\   /| |  | | |  | |   \\ \\/  \\/ /   | | | . ` |\n    | | | |__| | |__| |    \\  /\\  /   _| |_| |\\  |\n    |_|  \\____/ \\____/      \\/  \\/   |_____|_| \\_|\n\npress Enter to continue";
 
 	resetGame(s);
 
 	//resetGame("YOU WIN!!!!\n\n\n\npress any key to continue");
 }
-
 
 void Game_Logic::resetGame(string s){
 	char ch;
@@ -106,7 +109,7 @@ void Game_Logic::resetGame(string s){
 	setTextColor(Color(WHITE));
 	cout << s;
 
-	cin>>ch;
+	_getch();
 	system("cls");
 
 	pacman.initPacman(Point(1, 6));
@@ -114,7 +117,6 @@ void Game_Logic::resetGame(string s){
 	ghost2.setGhost(Point(15, 6), board);
 	runGame();
 }
-
 
 void Game_Logic::getInput(bool& flag) {
 	int s;
@@ -137,8 +139,6 @@ void Game_Logic::getInput(bool& flag) {
 		pacman.setVector(dir);
 	}
 }
-
-
 
 char Game_Logic::menu()
 {
@@ -164,11 +164,14 @@ char Game_Logic::menu()
 	//cin >> choice;
 	choice = _getch();
 	while (choice != '1' && choice != '2' && choice != '9'){
-		system("cls");
-		if (choice == '8')
+		if (choice == '8') {
+			system("cls");
 			printInstractions();
-		else
+		}
+		else {
+			gotoxy(0, 16);
 			cout << "Invalid choice. Choose a number from [1/2/8/9]:" << endl;
+		}
 		//cin >> choice;
 		choice = _getch();
 

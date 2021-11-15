@@ -71,7 +71,7 @@ class Board {
 
 public:
 
-	void printBoard();
+	void printBoard(bool black_and_white);
 	char getCell(Point p);
 	void editCell(Point p, char ch);
 

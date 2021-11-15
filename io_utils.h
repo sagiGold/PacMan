@@ -13,12 +13,11 @@ using namespace std;
 
 enum Shape {PACMAN = '@',GHOST = '&', BREAD = 250, WALL = 178};
 
+
 void gotoxy(int x, int y);
 void setTextColor(Color);
 void hideCursor();
 void clear_screen();
 void printNewGame();
-
-
 
 #endif

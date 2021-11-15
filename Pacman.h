@@ -24,10 +24,11 @@ class Pacman {
 		void setPacman(Point p);
 		void setVector(Move_Vector dir);
 		void setLife(int _life);
+		void setColor(Color c); 
+
 		int getLife();
 		Point getPacman(); 
 		char getShape(); 
-		Color getColor(); // no need
 		int getScore();
 
 
