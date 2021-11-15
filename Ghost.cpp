@@ -16,7 +16,7 @@ Ghost::Ghost(Point _p, Color c) {
 	v = STAY;
 }
 
-Ghost::~Ghost() { delete this; }
+//Ghost::~Ghost() { delete this; }
 
 //--------Getters and Setters---------------------------//
 
@@ -42,22 +42,14 @@ void Ghost::moveGhost(Board& board) { // cancel blackHole passing option
 	next_point = curr_point;
 	next_point.move();
 	unsigned char readVal = board.getCell(next_point);
-	switch (readVal) {
-	case (unsigned char)WALL:
+	if(isEndBoard())
+		return;
+	if (readVal == (unsigned char)WALL) {
 		v = STAY;
 		return;
-	case (unsigned char)BREAD:
-		setTextColor(Color::LIGHTGREY);
-		curr_point.draw((unsigned char)BREAD);
-		break;
-	case (unsigned char)PACMAN:
-		clear_screen();
-		gotoxy(0, 0);
-		cout << "YOU LOSE" << endl;
-	default:
-		curr_point.draw(' ');
-		break;
 	}
+	setTextColor(Color::LIGHTGREY);
+	curr_point.draw(board.getCell(curr_point));
 	curr_point = next_point;
 	printGhost();
 }
@@ -65,4 +57,18 @@ void Ghost::moveGhost(Board& board) { // cancel blackHole passing option
 void Ghost::printGhost() {
 	setTextColor(color);
 	curr_point.draw(shape);
+}
+
+void Ghost::setColor(Color c){
+	color = c;
+}
+
+
+bool Ghost::isEndBoard() {
+	if (next_point.getX() > WIDTH - 2 || next_point.getX() < 1 || next_point.getY() > HEIGHT-1 || next_point.getY() < 1)
+	{
+		v = STAY;
+		return true;
+	}
+	return false;
 }

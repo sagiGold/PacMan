@@ -7,37 +7,34 @@
 #include "Ghost.h"
 #include "io_utils.h"
 
-void runGame();
-char menu();
-void run();
-void printInstractions();
-void isGameOver(Pacman* pacman, Ghost* g1, Ghost* g2, Board& board);
+
+class Game_Logic
+{
+private:
+	Board board;
+	Pacman pacman;
+	Ghost ghost1, ghost2;
+
+	public:
+		//constructors
+		Game_Logic();
+
+		//setters and getters
+		void setGameLogic(Point p);
+
+		//methods
+		char menu();
+		void run();
+		void getInput(bool& flag);
+		//void restart();
 
 
-//class Game_Logic
-//{
-//	/*Board board;
-//	Pacman pacman;
-//	Ghost ghost1, ghost2;*/
-//
-//	public:
-//		//constructors
-//		Game_Logic();
-//		~Game_Logic();
-//
-//		//setters and getters
-//		void setGameLogic(Point p);
-//
-//		//methods
-//		void menu();
-//		void run();
-//		//void pause();
-//		//void restart();
-//	private:
-//		/*void initGame();
-//		void movePacman();
-//		void moveGhost();
-//		bool hit();*/
-//};
+		void runGame();
+		void printInstractions();
+		void isGameOver(bool& flag);
+		void winGame();
+		void resetGame(string s);
+	
+};
 
 #endif

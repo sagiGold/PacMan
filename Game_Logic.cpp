@@ -1,10 +1,20 @@
 #include "Game_Logic.h"
 
-//Game_Logic::Game_Logic() {
-//
-//}
 
-void runGame() {
+/*TODO:
+	* Add non-color option in menu,  indicate in readme.txt file all bonus additions
+	* Change Keys b4 serving project (W,A,D,X,S)
+*/
+
+Game_Logic::Game_Logic() {
+	ghost1.setGhost(Point(16, 5), board);
+	ghost2.setGhost(Point(15, 5), board);
+
+	ghost2.setColor(MAGENTA);
+
+}
+
+void Game_Logic::runGame() {
 	/* to do
 	pacman.setPacman();
 	ghost1.setGhost(Point(15, 5), Color(RED));
@@ -24,84 +34,150 @@ void runGame() {
 	}
 }
 
-void run()
+void Game_Logic::run()
 {
 	int slowTheGhost = 1;
 	Board board;
 	Move_Vector dir = STAY;
-	Pacman* pacman = new Pacman();
-	Ghost* ghost1 = new Ghost(Point(15, 5), Color(RED));
-	Ghost* ghost2 = new Ghost(Point(16, 5), Color(MAGENTA));
 
+
+	bool flag = true;
+	bool didILose = false;
 	board.printBoard();
-	pacman->printPacman();
-	ghost1->printGhost();
-	ghost2->printGhost();
+	pacman.printPacman();
+	ghost1.printGhost();
+	ghost2.printGhost();
 
-	while (1) {
-		pacman->moveVector(dir);
-		pacman->movePacman(board);
-		if (slowTheGhost % 2 == 0) {
-			ghost1->moveGhost(board);
-			ghost2->moveGhost(board);
+	while (pacman.getScore() < MAX_SCORE) {
+		getInput(flag);
+		if (flag) {
+			pacman.movePacman(board);
+			if (slowTheGhost % 2 == 0) {
+				ghost1.moveGhost(board);
+				ghost2.moveGhost(board);
+			}
 		}
-		isGameOver(pacman, ghost1, ghost2, board); // move it to a different class.
+		
+		isGameOver(didILose); 
 		slowTheGhost++;
-		pacman->printData();
+		pacman.printData();
 		Sleep(100);
 	}
+	if(!didILose)
+		winGame();
+	didILose = false;
 }
 
-void isGameOver(Pacman* pacman, Ghost* g1, Ghost* g2, Board& board) {
-	if (pacman->getPacman().isSamePoint(g1->getGhost()) || pacman->getPacman().isSamePoint(g2->getGhost())) {
-		pacman->setLife(pacman->getLife()-1);
-		if (pacman->getLife() == 0) {
-			clear_screen();
-			gotoxy(0, 0);
-			setTextColor(Color(WHITE));
-			cout << "Game Over :(" << endl << "Press any key to continue..." << endl;
-			char garbage;
-			cin >> garbage;
-			system("cls");
-			// call on distructor for pacman&ghosts ?
-			runGame();
+void Game_Logic::isGameOver(bool& flag) {
+	if (pacman.getPacman().isSamePoint(ghost1.getGhost()) || pacman.getPacman().isSamePoint(ghost2.getGhost())) {
+		pacman.setLife(pacman.getLife()-1);
+		if (pacman.getLife() == 0) {
+			resetGame("You lose\nPress any key to continue\n");
+			flag = !flag;
 		}
-		pacman->setPacman(Point(5, 6));
-		g1->setGhost(Point(16, 6), board);
-		g2->setGhost(Point(15, 6), board);
+		else {
+			pacman.setPacman(Point(1, 6));
+			ghost1.setGhost(Point(16, 6), board);
+			ghost2.setGhost(Point(15, 6), board);
+		}
 	}
 }
 
-char menu()
-{
-	printf("\n");
-	printf("********************************************\n");
-	printf("                                            \n");
-	printf("             Welcome To PacMan              \n");
-	printf("                                            \n");
-	printf("********************************************\n\n");
+void Game_Logic::winGame(){
+	/*prints:
+		__     ______  _    _  __          _______ _   _
+		\ \   / / __ \| |  | | \ \        / /_   _| \ | |
+		 \ \_/ / |  | | |  | |  \ \  /\  / /  | | |  \| |
+		  \   /| |  | | |  | |   \ \/  \/ /   | | | . ` |
+		   | | | |__| | |__| |    \  /\  /   _| |_| |\  |
+		   |_|  \____/ \____/      \/  \/   |_____|_| \_|*/
+	string s = "__     ______  _    _  __          _______ _   _\n \\ \\   / / __ \\| |  | | \\ \\        / /_   _| \\ | |\n  \\ \\_/ / |  | | |  | |  \\ \\  /\\  / /  | | |  \\| |\n   \\   /| |  | | |  | |   \\ \\/  \\/ /   | | | . ` |\n    | | | |__| | |__| |    \\  /\\  /   _| |_| |\\  |\n    |_|  \\____/ \\____/      \\/  \\/   |_____|_| \\_|\n\npress Enter to continue";
 
-	printf("Choose option from the following menu: \n");
-	printf(" 1.\tStart a new game (with colors) \n");
-	printf(" 2.\tStart a new game (without colors) \n");
-	printf(" 8.\tInstructions and keys \n");
-	printf(" 9.\tExit.\n");
+	resetGame(s);
+
+	//resetGame("YOU WIN!!!!\n\n\n\npress any key to continue");
+}
+
+
+void Game_Logic::resetGame(string s){
+	char ch;
+	clear_screen();
+	gotoxy(0, 0);
+	setTextColor(Color(WHITE));
+	cout << s;
+
+	cin>>ch;
+	system("cls");
+
+	pacman.initPacman(Point(1, 6));
+	ghost1.setGhost(Point(16, 6), board);
+	ghost2.setGhost(Point(15, 6), board);
+	runGame();
+}
+
+
+void Game_Logic::getInput(bool& flag) {
+	int s;
+	Move_Vector dir = STAY;
+	if (_kbhit()) {
+		s = _getch();
+		if (s == 27) {
+			flag = !flag;
+		}
+		if (s == 'w' || s == 'W')
+			dir = UP;
+		if (s == 'a' || s == 'A')
+			dir = LEFT;
+		if (s == 'd' || s == 'D')
+			dir = RIGHT;
+		if (s == 's' || s == 'S')
+			dir = DOWN;
+		if (s == ' ')
+			dir = STAY;
+		pacman.setVector(dir);
+	}
+}
+
+
+
+char Game_Logic::menu()
+{
+	gotoxy(0, 0);
+
+	cout <<""<<endl
+		<< "********************************************" << endl
+		<< "    _____           __  __			      " << endl
+		<< "   |  __ \\	   |  \\/  |		      " << endl
+		<< "   | |__) |_ _  ___| \\  / | __ _ _ __      " << endl
+		<< "   | ___ / _` |/ __| |\\/| |/ _` | '_ \\    " << endl
+		<< "   | |  | (_| | (__| |  | | (_| | | | |     " << endl
+		<< "   |_|   \\__,_|\\___|_|  |_|\\__,_|_| |_|   " << endl
+		<< "                                            " << endl
+		<< "********************************************" << endl
+		<< "Choose option from the following menu: " << endl
+		<< " 1.\tStart a new game (with colors) " << endl
+		<< " 2.\tStart a new game (without colors) " << endl
+		<< " 8.\tInstructions and keys " << endl
+		<< " 9.\tExit." << endl;
 
 	char choice;
-	cin >> choice;
+	//cin >> choice;
+	choice = _getch();
 	while (choice != '1' && choice != '2' && choice != '9'){
 		system("cls");
 		if (choice == '8')
 			printInstractions();
 		else
 			cout << "Invalid choice. Choose a number from [1/2/8/9]:" << endl;
-		cin >> choice;
+		//cin >> choice;
+		choice = _getch();
+
 	}
 	system("cls");
 	return choice;
 }
 
-void printInstractions() {
+void Game_Logic::printInstractions() {
 	cout << "Welcome to Pacman !" << endl << "Your goal is to move the pacman on the screen and eat the breadcrumbs." << endl
 		<< "Each eaten breadcrumb equals a point to be earned." << endl
 		<< "Once all breadcrumbs on screen are eaten you win the game :)" << endl << endl

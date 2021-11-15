@@ -11,6 +11,12 @@ Pacman::Pacman() {
 }
 
 Pacman::Pacman(Point _p) {
+	initPacman(_p);
+}
+
+
+//--------Getters and Setters---------------------------//
+void Pacman::initPacman(Point _p) {
 	curr_point.setPoint(_p.getX(), _p.getY());
 	shape = (char)PACMAN;
 	color = YELLOW;
@@ -19,9 +25,6 @@ Pacman::Pacman(Point _p) {
 	life = 3;
 }
 
-Pacman::~Pacman() { delete this; }
-
-//--------Getters and Setters---------------------------//
 void Pacman::setPacman(Point p) {
 	curr_point.setPoint(p.getX(), p.getY());
 	v = STAY;
@@ -34,6 +37,8 @@ void Pacman::setLife(int _life) { life = _life; }
 
 int Pacman::getLife() { return life; }
 
+int Pacman::getScore() {return score;}
+
 Point Pacman::getPacman() {return curr_point;}
 
 char Pacman::getShape() {return shape;}
@@ -43,28 +48,12 @@ Color Pacman::getColor() {return color;}
 
 //--------Methods------------------------------------//
 
-void Pacman::moveVector(Move_Vector& dir) {
-	int s;
-	if (_kbhit()) {
-		s = _getch();
-		if (s == 'w' || s== 'W')
-			dir = UP;
-		if (s == 'a' || s == 'A')
-			dir = LEFT;
-		if (s == 'd' || s == 'D')
-			dir = RIGHT;
-		if (s == 's' || s == 'S')
-			dir = DOWN;
-		if (s == ' ')
-			dir = STAY;
-		setVector(dir);
-	}
-}
 
 void Pacman::movePacman(Board &board) {
 	if (v != STAY) {
 		next_point = curr_point;
 		next_point.move(v);
+		isEndBoard();
 		unsigned char readVal = board.getCell(next_point);
 		switch (readVal) {
 			case (unsigned char)WALL:
@@ -73,11 +62,6 @@ void Pacman::movePacman(Board &board) {
 			case (unsigned char)BREAD:
 				score++;
 				break;
-			case (unsigned char)GHOST:
-				clear_screen();
-				gotoxy(0, 0);
-				cout << "YOU LOSE" << endl; 
-				// force game over
 			default:
 				break;
 		}
@@ -100,23 +84,14 @@ void Pacman::printData() {
 	cout << "Remaining Lives: " << life << endl;
 }
 
-//void Pacman::isGameOver(Ghost* g1, Ghost* g2,Board& board) {  
-//	if (curr_point.isSamePoint(g1->getGhost()) || curr_point.isSamePoint(g2->getGhost())) {
-//		life--;
-//		if (life == 0) {
-//			clear_screen();
-//			gotoxy(0, 0);
-//			setTextColor(Color(WHITE));
-//			cout << "Game Over :(" << endl;
-//			// print menu again
-//		}
-//		setPacman(Point(5, 6));
-//		g1->setGhost(Point(16, 6), board);
-//		g2->setGhost(Point(15, 6), board);
-//	}
-//}
 
-
-//int Pacman::collision() {
-//	
-//}
+void Pacman::isEndBoard() {
+	if (next_point.getX() == WIDTH-1)
+		next_point.setPoint(1, next_point.getY());
+	else if(next_point.getX() < 1)
+		next_point.setPoint(WIDTH-2, next_point.getY());
+	else if (next_point.getY() > HEIGHT)
+		next_point.setPoint(next_point.getX(),1);
+	else if (next_point.getY() < 1)
+		next_point.setPoint(next_point.getX(), HEIGHT);
+}

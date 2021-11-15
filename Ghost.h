@@ -14,7 +14,7 @@ public:
 	//constructors
 	Ghost();
 	Ghost(Point _p, Color c);
-	~Ghost();
+	//~Ghost();
 
 	//setters and getters
 	void setGhost(Point p, Board& board);
@@ -24,8 +24,11 @@ public:
 	void moveGhost(Board& board);
 	void printGhost();
 
+	void setColor(Color c);
+
 private:
 	Point next_point;
+	bool isEndBoard();
 };
 
 #endif

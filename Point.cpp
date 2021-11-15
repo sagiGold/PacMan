@@ -35,27 +35,30 @@ void Point::move(int dir) {
 	switch (dir) {
 	case 0: // UP
 		--y;
-		if (y < 2)
-			y = 11;
+		/*if (y < 2)
+			y = 11;*/
 		break;
 	case 1: // DOWN
 		++y;
-		if (y > 11)
-			y = 1;
+		/*if (y > 11)
+			y = 1;*/
 		break;
 	case 2: // LEFT
 		--x;
-		if (x < 2)
-			x = 32;
+		/*if (x < 2)
+			x = 32;*/
 		break;
 	case 3: // RIGHT
 		++x;
-		if (x > 32)
-			x = 1;
+		/*if (x > 32)
+			x = 1;*/
 		break;
 	}
 }
 
+
+
 bool Point::isSamePoint(const Point p1) {
 	return (x == p1.x) && (y == p1.y);
 }
+
