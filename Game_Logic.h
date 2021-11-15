@@ -38,6 +38,7 @@ private:
 		void isGameOver(bool& flag);
 		void winGame();
 		void resetGame(string s);
+		void printExit();
 	
 };
 

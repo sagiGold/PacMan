@@ -7,6 +7,7 @@
 */
 
 Game_Logic::Game_Logic() {
+	black_and_white = true;
 	ghost1.setGhost(Point(16, 5), board);
 	ghost2.setGhost(Point(15, 5), board);
 
@@ -32,7 +33,7 @@ void Game_Logic::runGame() {
 		run();
 		break;
 	case '9':
-		cout << "Good Bye !" << endl;
+		printExit();
 		exit(0);
 		break;
 	}
@@ -167,6 +168,9 @@ char Game_Logic::menu()
 		if (choice == '8') {
 			system("cls");
 			printInstractions();
+			_getch();
+			system("cls");
+			menu();
 		}
 		else {
 			gotoxy(0, 16);
@@ -191,5 +195,18 @@ void Game_Logic::printInstractions() {
 		<< "DOWN -> x or X" << endl
 		<< "STAY -> s or S" << endl
 		<< "ESC -> Pause" << endl << endl
-		<< "Choose a number from [1 / 2 / 9]:" << endl;
+		<< "Press any Key to continue:" << endl;
+}
+
+void Game_Logic::printExit() {
+	cout << "" << endl
+		<< "    .______                _____		   " << endl
+		<< "   /       \\              /     \\		   " << endl
+		<< "  /    O   /   _   _     / O O   \\     _   _   " << endl
+		<< " |       ./   (_) (_)   |         |   (_) (_) " << endl
+		<< " |       \\              | ~~~     | 	   " << endl
+		<< " |        \\             |         |	   " << endl
+		<< "  \\        /            |         |	   " << endl
+		<< "   \\______/             |/vvvvvvv\\|      " << endl
+		<< "        GOOD BYE     ";
 }

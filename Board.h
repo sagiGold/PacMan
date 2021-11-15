@@ -2,11 +2,10 @@
 #define BOARD_H_
 
 #include "Point.h"
-#define NUM_OF_BARRIES 50
 
 #define WIDTH 34
 #define HEIGHT 12
-#define MAX_SCORE 30
+#define MAX_SCORE 180
 
 #define W (char)(178)<<	//wall
 #define O (char)(250)<<	//bread
