@@ -2,7 +2,7 @@
 
 
 /*TODO:
-	* Add non-color option in menu,  indicate in readme.txt file all bonus additions
+	* indicate in readme.txt file all bonus additions
 	* Change Keys b4 serving project (W,A,D,X,S)
 */
 
@@ -99,8 +99,6 @@ void Game_Logic::winGame(){
 	string s = " __     ______  _    _  __          _______ _   _\n \\ \\   / / __ \\| |  | | \\ \\        / /_   _| \\ | |\n  \\ \\_/ / |  | | |  | |  \\ \\  /\\  / /  | | |  \\| |\n   \\   /| |  | | |  | |   \\ \\/  \\/ /   | | | . ` |\n    | | | |__| | |__| |    \\  /\\  /   _| |_| |\\  |\n    |_|  \\____/ \\____/      \\/  \\/   |_____|_| \\_|\n\npress Enter to continue";
 
 	resetGame(s);
-
-	//resetGame("YOU WIN!!!!\n\n\n\npress any key to continue");
 }
 
 void Game_Logic::resetGame(string s){
@@ -162,7 +160,6 @@ char Game_Logic::menu()
 		<< " 9.\tExit." << endl;
 
 	char choice;
-	//cin >> choice;
 	choice = _getch();
 	while (choice != '1' && choice != '2' && choice != '9'){
 		if (choice == '8') {
@@ -176,7 +173,6 @@ char Game_Logic::menu()
 			gotoxy(0, 16);
 			cout << "Invalid choice. Choose a number from [1/2/8/9]:" << endl;
 		}
-		//cin >> choice;
 		choice = _getch();
 
 	}

@@ -16,7 +16,6 @@ public:
 	void draw(char ch);
 	void move();
 	void move(int direction);
-	char readPoint();
 	bool isSamePoint(const Point p1);
 };
 

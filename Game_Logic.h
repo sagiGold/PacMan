@@ -17,8 +17,6 @@ private:
 	Ghost ghost1, ghost2;
 	bool black_and_white;
 
-	/*Colour _colour;*/
-
 	public:
 		//constructors
 		Game_Logic();
@@ -30,7 +28,6 @@ private:
 		char menu();
 		void run();
 		void getInput(bool& flag);
-		//void restart();
 
 
 		void runGame();

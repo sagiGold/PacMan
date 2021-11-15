@@ -16,8 +16,6 @@ Ghost::Ghost(Point _p, Color c) {
 	v = STAY;
 }
 
-//Ghost::~Ghost() { delete this; }
-
 //--------Getters and Setters---------------------------//
 
 void Ghost::setGhost(Point p, Board& board) {

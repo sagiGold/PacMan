@@ -61,16 +61,3 @@ void printNewGame()
 //<< "▓······▓··············▓······▓" << endl
 //<< "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓" << endl;
 
-/*
-		  W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W
-		  W O O O O O O W O O O O O O O O O O O O O O W O O O O O O W
-		  W O W W W O O W O O W W W W W W W W W W O O W O O W W W O W
-		  W O W O O O O O O O O O O O O O O O O O O O O O O O O W O W
-		  W O W O O W W W O O W W "      " << W W O O W W W O O W O W
-		  ' ' << O O O O O O O O O W "        " << W O O O O O O O O 
-		  W O W O O W W W O O W W W W W W W W W W O O W W W O O W O W
-		  W O W O O O O O O O O O O O O O O O O O O O O O O O O W O W
-		  W O W W W O O W O O W W W W W W W W W W O O W O O W W W O W
-		  W O O O O O O W O O O O O O O O O O O O O O W O O O O O O W
-		  W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W
-*/

@@ -14,7 +14,6 @@ public:
 	//constructors
 	Ghost();
 	Ghost(Point _p, Color c);
-	//~Ghost();
 
 	//setters and getters
 	void setGhost(Point p, Board& board);

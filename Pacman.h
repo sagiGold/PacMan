@@ -17,7 +17,6 @@ class Pacman {
 		//constructors
 		Pacman();
 		Pacman(Point _p);
-		//~Pacman();
 		
 		//setters and getters
 		void initPacman(Point _p);
@@ -36,12 +35,10 @@ class Pacman {
 		void movePacman(Board &board);
 		void printPacman();
 		void printData();
-		//void isGameOver(Ghost* g1, Ghost* g2, Board& board);
 
 	private:
 		void isEndBoard();
 		Point next_point;
-		//int collision();
 };
 
 #endif 
