@@ -48,9 +48,13 @@ void Point::move(int dir) {
 	}
 }
 
-
-
 bool Point::isSamePoint(const Point p1) {
 	return (x == p1.x) && (y == p1.y);
 }
+
+//bool operator== ( Point& p1, Point& p2) {
+//	return (p1.getX() == p2.getX() && p1.getY() == p2.getY());
+//}
+
+
 

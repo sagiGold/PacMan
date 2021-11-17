@@ -32,8 +32,6 @@ void Ghost::setGhost(Point p, Board& board) {
 	curr_point.setPoint(p.getX(), p.getY());
 }
 
-Point Ghost::getGhost() {return curr_point;}
-
 //--------Methods------------------------------------//
 
 void Ghost::moveGhost(Board& board) { // cancel blackHole passing option
@@ -56,11 +54,6 @@ void Ghost::printGhost() {
 	setTextColor(color);
 	curr_point.draw(shape);
 }
-
-void Ghost::setColor(Color c){
-	color = c;
-}
-
 
 bool Ghost::isEndBoard() {
 	if (next_point.getX() > WIDTH - 2 || next_point.getX() < 1 || next_point.getY() > HEIGHT-1 || next_point.getY() < 1)

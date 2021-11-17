@@ -31,3 +31,10 @@ void Board::editCell(Point p, char ch) {
 	board[p.getY()][p.getX()] = ch;
 }
 
+void Board::printData(int score, int life) {
+	setTextColor(Color::WHITE);
+	gotoxy(0, HEIGHT + 1);
+	cout << "Current Score   : " << score << endl;
+	cout << "Remaining Lives : " << life << endl;
+}
+

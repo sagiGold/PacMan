@@ -6,13 +6,13 @@
 #include <windows.h>
 #include <conio.h>
 
-#define w (char)178<<	//wall
-#define o (char)250<<	//bread
-
-using namespace std;
+using std::cout;
+using std::cin; 
+using std::endl;
+using std::flush;
+using std::string;
 
 enum Shape {PACMAN = '@',GHOST = '&', BREAD = 250, WALL = 178};
-
 
 void gotoxy(int x, int y);
 void setTextColor(Color);

@@ -1,17 +1,19 @@
 #include "Game_Logic.h"
 
-
 /*TODO:
 	* indicate in readme.txt file all bonus additions
 	* Change Keys b4 serving project (W,A,D,X,S)
+	* Game_Logic::run() -> fix overload on stack
+	* Change _getc in winGame()&isGameOver() to cin :
+	* while playing player hits keyboard a lot and often misses win/lost messages
+	* Two main bugs: sometimes pacman get threw ghost + ghots still pooping extra breadcrumbs
+	* Move getInput() to io_utils.cpp
 */
 
 Game_Logic::Game_Logic() {
 	black_and_white = true;
 	ghost1.setGhost(Point(16, 5), board);
 	ghost2.setGhost(Point(15, 5), board);
-
-
 }
 
 void Game_Logic::runGame() {
@@ -45,27 +47,27 @@ void Game_Logic::run()
 	Board board;
 	Move_Vector dir = STAY;
 
-
-	bool flag = true;
+	bool pauseFlag = false;
 	bool didILose = false;
+
 	board.printBoard(black_and_white);
 	pacman.printPacman();
 	ghost1.printGhost();
 	ghost2.printGhost();
 
-	while (pacman.getScore() < MAX_SCORE) {
-		getInput(flag);
-		if (flag) {
+	while (pacman.getScore() < MAX_SCORE /*|| didILose*/) {
+		getInput(pauseFlag);
+		if (!pauseFlag) {
 			pacman.movePacman(board);
 			if (slowTheGhost % 2 == 0) {
 				ghost1.moveGhost(board);
 				ghost2.moveGhost(board);
 			}
+			slowTheGhost++;
 		}
 		
 		isGameOver(didILose); 
-		slowTheGhost++;
-		pacman.printData();
+		board.printData(pacman.getScore(), pacman.getLife());
 		Sleep(100);
 	}
 	if(!didILose)
@@ -76,8 +78,8 @@ void Game_Logic::run()
 void Game_Logic::isGameOver(bool& flag) {
 	if (pacman.getPacman().isSamePoint(ghost1.getGhost()) || pacman.getPacman().isSamePoint(ghost2.getGhost())) {
 		pacman.setLife(pacman.getLife()-1);
-		if (pacman.getLife() == 0) {
-			resetGame("You lose\nPress any key to continue\n");
+		if (pacman.getLife() <= 0) {
+			resetGame("You Lose :(\n\nPress any key to continue\n");
 			flag = !flag;
 		}
 		else {
@@ -96,7 +98,7 @@ void Game_Logic::winGame(){
 		  \   /| |  | | |  | |   \ \/  \/ /   | | | . ` |
 		   | | | |__| | |__| |    \  /\  /   _| |_| |\  |
 		   |_|  \____/ \____/      \/  \/   |_____|_| \_|*/
-	string s = " __     ______  _    _  __          _______ _   _\n \\ \\   / / __ \\| |  | | \\ \\        / /_   _| \\ | |\n  \\ \\_/ / |  | | |  | |  \\ \\  /\\  / /  | | |  \\| |\n   \\   /| |  | | |  | |   \\ \\/  \\/ /   | | | . ` |\n    | | | |__| | |__| |    \\  /\\  /   _| |_| |\\  |\n    |_|  \\____/ \\____/      \\/  \\/   |_____|_| \\_|\n\npress Enter to continue";
+	string s = " __     ______  _    _  __          _______ _   _\n \\ \\   / / __ \\| |  | | \\ \\        / /_   _| \\ | |\n  \\ \\_/ / |  | | |  | |  \\ \\  /\\  / /  | | |  \\| |\n   \\   /| |  | | |  | |   \\ \\/  \\/ /   | | | . ` |\n    | | | |__| | |__| |    \\  /\\  /   _| |_| |\\  |\n    |_|  \\____/ \\____/      \\/  \\/   |_____|_| \\_|\n\nPress any key to return the menu";
 
 	resetGame(s);
 }
@@ -122,9 +124,8 @@ void Game_Logic::getInput(bool& flag) {
 	Move_Vector dir = STAY;
 	if (_kbhit()) {
 		s = _getch();
-		if (s == 27) {
+		if (s == 27) // Pause game if user presses ESC  
 			flag = !flag;
-		}
 		if (s == 'w' || s == 'W')
 			dir = UP;
 		if (s == 'a' || s == 'A')
@@ -141,9 +142,27 @@ void Game_Logic::getInput(bool& flag) {
 
 char Game_Logic::menu()
 {
-	gotoxy(0, 0);
+	printMenu();
+	char choice = _getch();
 
-	cout <<""<<endl
+	while (choice != '1' && choice != '2' && choice != '9'){
+		if (choice == '8') {
+			printInstractions();
+			printMenu();
+		}
+		else {
+			gotoxy(0, 16);
+			cout << "Invalid choice. Choose a number from [1/2/8/9]:" << endl;
+		}
+		choice = _getch();
+	}
+	system("cls");
+	return choice;
+}
+
+void Game_Logic::printMenu() {
+	gotoxy(0, 0);
+	cout << "" << endl
 		<< "********************************************" << endl
 		<< "    _____           __  __			      " << endl
 		<< "   |  __ \\	   |  \\/  |		      " << endl
@@ -158,32 +177,13 @@ char Game_Logic::menu()
 		<< " 2.\tStart a new game (without colors) " << endl
 		<< " 8.\tInstructions and keys " << endl
 		<< " 9.\tExit." << endl;
-
-	char choice;
-	choice = _getch();
-	while (choice != '1' && choice != '2' && choice != '9'){
-		if (choice == '8') {
-			system("cls");
-			printInstractions();
-			_getch();
-			system("cls");
-			menu();
-		}
-		else {
-			gotoxy(0, 16);
-			cout << "Invalid choice. Choose a number from [1/2/8/9]:" << endl;
-		}
-		choice = _getch();
-
-	}
-	system("cls");
-	return choice;
 }
 
 void Game_Logic::printInstractions() {
+	system("cls");
 	cout << "Welcome to Pacman !" << endl << "Your goal is to move the pacman on the screen and eat the breadcrumbs." << endl
 		<< "Each eaten breadcrumb equals a point to be earned." << endl
-		<< "Once all breadcrumbs on screen are eaten you win the game :)" << endl << endl
+		<< "Once all breadcrumbs on screen are eaten you win the game :)\n" << endl
 		<< "Keys for the game:" << endl
 		<< "LEFT -> a or A" << endl
 		<< "RIGHT -> d or D" << endl
@@ -191,11 +191,13 @@ void Game_Logic::printInstractions() {
 		<< "DOWN -> x or X" << endl
 		<< "STAY -> s or S" << endl
 		<< "ESC -> Pause" << endl << endl
-		<< "Press any Key to continue:" << endl;
+		<< "Press any key to return to the menu." << endl;
+	_getch();
+	system("cls");
 }
 
 void Game_Logic::printExit() {
-	cout << "" << endl
+	cout << endl
 		<< "    .______                _____		   " << endl
 		<< "   /       \\              /     \\		   " << endl
 		<< "  /    O   /   _   _     / O O   \\     _   _   " << endl
@@ -204,5 +206,5 @@ void Game_Logic::printExit() {
 		<< " |        \\             |         |	   " << endl
 		<< "  \\        /            |         |	   " << endl
 		<< "   \\______/             |/vvvvvvv\\|      " << endl
-		<< "        GOOD BYE     ";
+		<< "\n             GOOD BYE     \n";
 }

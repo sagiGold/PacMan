@@ -28,15 +28,13 @@ private:
 		char menu();
 		void run();
 		void getInput(bool& flag);
-
-
 		void runGame();
 		void printInstractions();
 		void isGameOver(bool& flag);
 		void winGame();
 		void resetGame(string s);
 		void printExit();
-	
+		void printMenu();
 };
 
 #endif

@@ -21,20 +21,18 @@ class Pacman {
 		//setters and getters
 		void initPacman(Point _p);
 		void setPacman(Point p);
-		void setVector(Move_Vector dir);
-		void setLife(int _life);
-		void setColor(Color c); 
+		void setVector(Move_Vector dir) { v = dir; }
+		void setLife(int _life) { life = _life; }
+		void setColor(Color c) { color = c; }
 
-		int getLife();
-		Point getPacman(); 
-		char getShape(); 
-		int getScore();
-
+		int getLife() { return life; }
+		int getScore() { return score; }
+		char getShape() { return shape; }
+		Point getPacman() { return curr_point; }
 
 		//methods
 		void movePacman(Board &board);
 		void printPacman();
-		void printData();
 
 	private:
 		void isEndBoard();

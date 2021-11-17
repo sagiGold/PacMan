@@ -17,13 +17,12 @@ public:
 
 	//setters and getters
 	void setGhost(Point p, Board& board);
-	Point getGhost();
+	Point getGhost() { return curr_point; }
 
 	//methods
 	void moveGhost(Board& board);
 	void printGhost();
-
-	void setColor(Color c);
+	void setColor(Color c) {color = c;}
 
 private:
 	Point next_point;

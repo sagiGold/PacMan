@@ -14,7 +14,6 @@ Pacman::Pacman(Point _p) {
 	initPacman(_p);
 }
 
-
 //--------Getters and Setters---------------------------//
 void Pacman::initPacman(Point _p) {
 	curr_point.setPoint(_p.getX(), _p.getY());
@@ -31,24 +30,7 @@ void Pacman::setPacman(Point p) {
 	printPacman();
 }
 
-void Pacman::setVector(Move_Vector dir) {v = dir;}
-
-void Pacman::setLife(int _life) { life = _life; }
-
-void Pacman::setColor(Color c) {color = c;}
-
-int Pacman::getLife() { return life; }
-
-int Pacman::getScore() {return score;}
-
-Point Pacman::getPacman() {return curr_point;}
-
-char Pacman::getShape() {return shape;}
-
-
-
 //--------Methods------------------------------------//
-
 
 void Pacman::movePacman(Board &board) {
 	if (v != STAY) {
@@ -77,14 +59,6 @@ void Pacman::printPacman() {
 	setTextColor(color);
 	curr_point.draw(shape);
 }
-
-void Pacman::printData() {
-	setTextColor(Color::WHITE);
-	gotoxy(0, HEIGHT + 1);
-	cout << "Current Score: " << score << endl;
-	cout << "Remaining Lives: " << life << endl;
-}
-
 
 void Pacman::isEndBoard() {
 	if (next_point.getX() == WIDTH - 1)
