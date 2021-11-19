@@ -29,6 +29,7 @@ class Pacman {
 		int getScore() { return score; }
 		char getShape() { return shape; }
 		Point getPacman() { return curr_point; }
+		Point getPacmanPrev() { return prev_point; }
 
 		//methods
 		void movePacman(Board &board);
@@ -37,6 +38,7 @@ class Pacman {
 	private:
 		void isEndBoard();
 		Point next_point;
+		Point prev_point;
 };
 
 #endif 

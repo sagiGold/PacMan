@@ -26,6 +26,7 @@ void Pacman::initPacman(Point _p) {
 
 void Pacman::setPacman(Point p) {
 	curr_point.setPoint(p.getX(), p.getY());
+	prev_point = curr_point;
 	v = STAY;
 	printPacman();
 }
@@ -34,6 +35,7 @@ void Pacman::setPacman(Point p) {
 
 void Pacman::movePacman(Board &board) {
 	if (v != STAY) {
+		prev_point = curr_point;
 		next_point = curr_point;
 		next_point.move(v);
 		isEndBoard();

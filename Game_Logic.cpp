@@ -79,7 +79,8 @@ void Game_Logic::run()
 }
 
 void Game_Logic::isGameOver(bool& flag) {
-	if (pacman.getPacman().isSamePoint(ghost1.getGhost()) || pacman.getPacman().isSamePoint(ghost2.getGhost())) {
+	//if (pacman.getPacman().isSamePoint(ghost1.getGhost()) || pacman.getPacman().isSamePoint(ghost2.getGhost())) {
+	if (collion()) {
 		pacman.setLife(pacman.getLife()-1);
 		if (pacman.getLife() <= 0) {
 			resetGame("You Lose :(\n\nPress any key to continue\n");
@@ -91,6 +92,13 @@ void Game_Logic::isGameOver(bool& flag) {
 			ghost2.setGhost(Point(15, 6), board);
 		}
 	}
+}
+
+bool Game_Logic::collion() {
+	return (pacman.getPacman().isSamePoint(ghost1.getGhost()) ||
+		pacman.getPacman().isSamePoint(ghost2.getGhost()) ||
+		pacman.getPacmanPrev().isSamePoint(ghost1.getGhost()) ||
+		pacman.getPacmanPrev().isSamePoint(ghost2.getGhost()));
 }
 
 void Game_Logic::winGame(){

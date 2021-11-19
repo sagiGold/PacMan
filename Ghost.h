@@ -18,6 +18,8 @@ public:
 	//setters and getters
 	void setGhost(Point p, Board& board);
 	Point getGhost() { return curr_point; }
+	Point getGhostPrev() { return prev_point; }
+
 
 	//methods
 	void moveGhost(Board& board);
@@ -26,6 +28,8 @@ public:
 
 private:
 	Point next_point;
+	Point prev_point;
+
 	bool isEndBoard();
 };
 

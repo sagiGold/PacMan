@@ -19,6 +19,7 @@ Ghost::Ghost(Point _p, Color c) {
 //--------Getters and Setters---------------------------//
 
 void Ghost::setGhost(Point p, Board& board) {
+	prev_point = curr_point;
 	unsigned char readVal = board.getCell(curr_point);
 	switch (readVal) {
 		case (unsigned char)BREAD:

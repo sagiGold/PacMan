@@ -4,12 +4,12 @@
 #include "Point.h"
 
 #define WIDTH 34
-#define HEIGHT 13
+#define HEIGHT 12
 #define MAX_SCORE 180
 
-enum board_chars{ wa = 178, br = 250}; // wall & bread
 
 class Board {
+	enum board_chars{ wa = 178, br = 250}; // wall & bread
 	unsigned char board[HEIGHT][WIDTH] =
 	{
 		{' '},

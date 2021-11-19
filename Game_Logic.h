@@ -38,6 +38,8 @@ private:
 		void resetGame(string s);
 		void printExit();
 		void printMenu();
+private:
+		bool collion();
 };
 
 #endif
