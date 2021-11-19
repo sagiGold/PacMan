@@ -4,7 +4,7 @@
 #include "Point.h"
 
 #define WIDTH 34
-#define HEIGHT 12
+#define HEIGHT 13
 #define MAX_SCORE 180
 
 enum board_chars{ wa = 178, br = 250}; // wall & bread
@@ -26,8 +26,9 @@ class Board {
 		{ ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa }
 
 	};
-
+	/*unsigned char** board;*/
 public:
+	void initBoard();
 	void printBoard(bool black_and_white);
 	char getCell(Point p);
 	void editCell(Point p, char ch);

@@ -11,6 +11,9 @@
 
 class Game_Logic
 {
+	//enum Shape { PACMAN = '@', GHOST = '&', BREAD = 250, WALL = 178 };
+public:
+	static constexpr char PACMAN = '@';
 private:
 	Board board;
 	Pacman pacman;
