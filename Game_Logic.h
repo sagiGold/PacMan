@@ -8,12 +8,17 @@
 #include "io_utils.h"
 
 
+
 class Game_Logic
 {
+	//enum Shape { PACMAN = '@', GHOST = '&', BREAD = 250, WALL = 178 };
+public:
+	static constexpr char PACMAN = '@';
 private:
 	Board board;
 	Pacman pacman;
 	Ghost ghost1, ghost2;
+	bool black_and_white;
 
 	public:
 		//constructors
@@ -26,15 +31,15 @@ private:
 		char menu();
 		void run();
 		void getInput(bool& flag);
-		//void restart();
-
-
 		void runGame();
 		void printInstractions();
 		void isGameOver(bool& flag);
 		void winGame();
 		void resetGame(string s);
-	
+		void printExit();
+		void printMenu();
+private:
+		bool collion();
 };
 
 #endif

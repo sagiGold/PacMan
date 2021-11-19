@@ -145,7 +145,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pacman.cpp" />
     <ClCompile Include="Point.cpp" />
-    <ClCompile Include="Tests.cpp" />
     <ClCompile Include="Board.cpp" />
   </ItemGroup>
   <ItemGroup>

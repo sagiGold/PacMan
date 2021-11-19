@@ -6,7 +6,8 @@
 enum Move_Vector { UP , DOWN , LEFT , RIGHT , STAY };
 
 class Point {
-	int x, y; // Need to reboot starting point for each character (PacMan / Ghost)
+	int x, y;
+
 public:
 	Point();
 	Point(int x, int y);
@@ -16,8 +17,8 @@ public:
 	void draw(char ch);
 	void move();
 	void move(int direction);
-	char readPoint();
 	bool isSamePoint(const Point p1);
+	//friend bool operator== (Point& p1, Point& p2);
 };
 
 #endif

@@ -16,11 +16,10 @@ Ghost::Ghost(Point _p, Color c) {
 	v = STAY;
 }
 
-//Ghost::~Ghost() { delete this; }
-
 //--------Getters and Setters---------------------------//
 
 void Ghost::setGhost(Point p, Board& board) {
+	prev_point = curr_point;
 	unsigned char readVal = board.getCell(curr_point);
 	switch (readVal) {
 		case (unsigned char)BREAD:
@@ -32,9 +31,8 @@ void Ghost::setGhost(Point p, Board& board) {
 			break;
 	}
 	curr_point.setPoint(p.getX(), p.getY());
+	next_point = curr_point;
 }
-
-Point Ghost::getGhost() {return curr_point;}
 
 //--------Methods------------------------------------//
 
@@ -58,11 +56,6 @@ void Ghost::printGhost() {
 	setTextColor(color);
 	curr_point.draw(shape);
 }
-
-void Ghost::setColor(Color c){
-	color = c;
-}
-
 
 bool Ghost::isEndBoard() {
 	if (next_point.getX() > WIDTH - 2 || next_point.getX() < 1 || next_point.getY() > HEIGHT-1 || next_point.getY() < 1)

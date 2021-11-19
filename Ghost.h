@@ -14,20 +14,22 @@ public:
 	//constructors
 	Ghost();
 	Ghost(Point _p, Color c);
-	//~Ghost();
 
 	//setters and getters
 	void setGhost(Point p, Board& board);
-	Point getGhost();
+	Point getGhost() { return curr_point; }
+	Point getGhostPrev() { return prev_point; }
+
 
 	//methods
 	void moveGhost(Board& board);
 	void printGhost();
-
-	void setColor(Color c);
+	void setColor(Color c) {color = c;}
 
 private:
 	Point next_point;
+	Point prev_point;
+
 	bool isEndBoard();
 };
 

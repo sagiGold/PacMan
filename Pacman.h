@@ -17,30 +17,28 @@ class Pacman {
 		//constructors
 		Pacman();
 		Pacman(Point _p);
-		//~Pacman();
 		
 		//setters and getters
 		void initPacman(Point _p);
 		void setPacman(Point p);
-		void setVector(Move_Vector dir);
-		void setLife(int _life);
-		int getLife();
-		Point getPacman(); 
-		char getShape(); 
-		Color getColor(); // no need
-		int getScore();
+		void setVector(Move_Vector dir) { v = dir; }
+		void setLife(int _life) { life = _life; }
+		void setColor(Color c) { color = c; }
 
+		int getLife() { return life; }
+		int getScore() { return score; }
+		char getShape() { return shape; }
+		Point getPacman() { return curr_point; }
+		Point getPacmanPrev() { return prev_point; }
 
 		//methods
 		void movePacman(Board &board);
 		void printPacman();
-		void printData();
-		//void isGameOver(Ghost* g1, Ghost* g2, Board& board);
 
 	private:
 		void isEndBoard();
 		Point next_point;
-		//int collision();
+		Point prev_point;
 };
 
 #endif 
