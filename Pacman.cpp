@@ -70,5 +70,5 @@ void Pacman::isEndBoard() {
 	else if (next_point.getY() > HEIGHT - 1)
 		next_point.setPoint(next_point.getX(),1);
 	else if (next_point.getY() < 1)
-		next_point.setPoint(next_point.getX(), HEIGHT);
+		next_point.setPoint(next_point.getX(), HEIGHT - 1);
 }
