@@ -4,7 +4,7 @@
 #include "Point.h"
 
 #define WIDTH 34
-#define HEIGHT 12
+#define HEIGHT 13
 #define MAX_SCORE 180
 
 
