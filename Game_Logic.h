@@ -35,6 +35,7 @@ private:
 		void printInstractions();
 		void isGameOver(bool& flag);
 		void winGame();
+		void gameOver();
 		void resetGame(string s);
 		void printExit();
 		void printMenu();
