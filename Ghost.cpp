@@ -30,6 +30,7 @@ void Ghost::setGhost(Point p, Board& board) {
 			break;
 	}
 	curr_point.setPoint(p.getX(), p.getY());
+	next_point = curr_point;
 }
 
 //--------Methods------------------------------------//

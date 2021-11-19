@@ -17,34 +17,35 @@ Game_Logic::Game_Logic() {
 }
 
 void Game_Logic::runGame() {
-	char choice = menu();
-
-	switch (choice) {
-	case '1':
-		black_and_white = false;
-		ghost1.setColor(RED);
-		ghost2.setColor(MAGENTA);
-		pacman.setColor(YELLOW);
-		run();
-		break;
-	case '2':
-		black_and_white = true;
-		ghost1.setColor(WHITE);
-		ghost2.setColor(WHITE);
-		pacman.setColor(WHITE);
-		run();
-		break;
-	case '9':
-		printExit();
-		exit(0);
-		break;
+	char choice;
+	while (true)
+	{
+		choice = menu();
+		switch (choice) {
+		case '1':
+			black_and_white = false;
+			ghost1.setColor(RED);
+			ghost2.setColor(MAGENTA);
+			pacman.setColor(YELLOW);
+			run();
+			break;
+		case '2':
+			black_and_white = true;
+			ghost1.setColor(WHITE);
+			ghost2.setColor(WHITE);
+			pacman.setColor(WHITE);
+			run();
+			break;
+		case '9':
+			printExit();
+			return;
+		}
 	}
 }
 
 void Game_Logic::run()
 {
 	int slowTheGhost = 1;
-	Board board;
 	Move_Vector dir = STAY;
 
 	bool pauseFlag = false;
@@ -55,7 +56,7 @@ void Game_Logic::run()
 	ghost1.printGhost();
 	ghost2.printGhost();
 
-	while (pacman.getScore() < MAX_SCORE /*|| didILose*/) {
+	while (pacman.getScore() < MAX_SCORE && !didILose) {
 		getInput(pauseFlag);
 		if (!pauseFlag) {
 			pacman.movePacman(board);
@@ -66,9 +67,11 @@ void Game_Logic::run()
 			slowTheGhost++;
 		}
 		
-		isGameOver(didILose); 
-		board.printData(pacman.getScore(), pacman.getLife());
-		Sleep(100);
+		isGameOver(didILose);
+		if (!didILose) {
+			board.printData(pacman.getScore(), pacman.getLife());
+			Sleep(100);
+		}
 	}
 	if(!didILose)
 		winGame();
@@ -113,10 +116,11 @@ void Game_Logic::resetGame(string s){
 	_getch();
 	system("cls");
 
+	board.initBoard();
 	pacman.initPacman(Point(1, 6));
 	ghost1.setGhost(Point(16, 6), board);
 	ghost2.setGhost(Point(15, 6), board);
-	runGame();
+	//runGame();
 }
 
 void Game_Logic::getInput(bool& flag) {
