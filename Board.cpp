@@ -1,40 +1,25 @@
 #include "Board.h"
 
-//Board::Board() {
-//
-//	board = {
-//		{' '},
-//		{ ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa},
-//		{ ' ', wa, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, wa },
-//		{ ' ', wa, br, br, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, br, br, wa },
-//		{ ' ', wa, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, wa },
-//		{ ' ', wa, br, br, wa, br, br, wa, wa, wa, br, br, wa, wa, ' ', ' ', ' ', ' ', ' ', ' ',  wa, wa, br, br, wa, wa, wa, br, br, wa, br, br, wa },
-//		{ ' ', ' ', br, br ,br, br, br, br, br, br, br, br, wa, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', wa, br, br, br, br, br, br, br, br, br, br,' ',' '},
-//		{ ' ', wa, br, br, wa, br, br, wa, wa, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, wa, wa, br, br, wa, br, br, wa},
-//		{ ' ', wa, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, wa },
-//		{ ' ', wa, br, br, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, br, br, wa },
-//		{ ' ', wa, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, wa },
-//		{ ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa }
-//
-//	};
-//}
-
 void Board::initBoard() {
 	unsigned char _board[HEIGHT][WIDTH] =
 	{
 		{' '},
-		{ ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa},
-		{ ' ', wa, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, wa },
-		{ ' ', wa, br, br, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, br, br, wa },
-		{ ' ', wa, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, wa },
-		{ ' ', wa, br, br, wa, br, br, wa, wa, wa, br, br, wa, wa, ' ', ' ', ' ', ' ', ' ', ' ',  wa, wa, br, br, wa, wa, wa, br, br, wa, br, br, wa },
-		{ ' ', ' ', br, br ,br, br, br, br, br, br, br, br, wa, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', wa, br, br, br, br, br, br, br, br, br, br,' ',' '},
-		{ ' ', wa, br, br, wa, br, br, wa, wa, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, wa, wa, br, br, wa, br, br, wa},
-		{ ' ', wa, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, wa },
-		{ ' ', wa, br, br, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, br, br, wa },
-		{ ' ', wa, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, wa },
-		{ ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa }
-
+		{' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa },
+		{' ', wa, wa, br, br, br, br, br, br, br, br, wa, wa, br, br, br, br, br, br, wa, wa, ' ', ' ', wa, wa, br, br, br, br, br, br, wa, wa, br, br, br, br, br, br, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa, br, br, wa, wa, br, br, wa, wa, ' ', ' ', wa, wa, br, br, wa, wa, br, br, wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa, br, br, wa, wa, br, br, br, br, br, br, br, br, br, br, wa, wa, br, br, wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, br, br, br, br, wa, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, wa, br, br, br, br, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, br, br, br, br, wa, wa, br, br, br, wa, wa, wa, ' ', ' ', ' ', ' ', ' ', ' ', wa, wa, wa, br, br, br, wa, wa, br, br, br, br, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, br, br, br, br, br, wa, wa, wa, wa, br, br, wa, wa, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', wa, wa, br, br, wa, wa, wa, wa, br, br, br, br, br, br, br, wa, wa },
+		{' ', ' ', ' ', br, br, br, br, br, br, br, br, br, br, br, br, br, wa, wa, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', wa, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, ' ', ' ' },
+		{' ', wa, wa, br, br, wa, wa, br, br, br, wa, wa, wa, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, wa, wa, wa, br, br, br, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, br, br, br, br, wa, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, wa, br, br, br, br, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa, br, br, wa, wa, ' ', ' ', 'P','a','c','M','a','n',' ',' ', wa, wa, br, br, wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, br, br, br, br, br, br, wa, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, wa, br, br, br, br, br, br, br, br, wa, wa },
+		{' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa }
 	};
 	for (int i = 0; i < HEIGHT; i++)
 		for (int j = 0; j < WIDTH; j++)
@@ -81,3 +66,21 @@ void Board::printData(int score, int life) {
 
 }
 
+//Board::Board() {
+//
+//	board = {
+//		{' '},
+//		{ ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa},
+//		{ ' ', wa, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, wa },
+//		{ ' ', wa, br, br, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, br, br, wa },
+//		{ ' ', wa, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, wa },
+//		{ ' ', wa, br, br, wa, br, br, wa, wa, wa, br, br, wa, wa, ' ', ' ', ' ', ' ', ' ', ' ',  wa, wa, br, br, wa, wa, wa, br, br, wa, br, br, wa },
+//		{ ' ', ' ', br, br ,br, br, br, br, br, br, br, br, wa, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', wa, br, br, br, br, br, br, br, br, br, br,' ',' '},
+//		{ ' ', wa, br, br, wa, br, br, wa, wa, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, wa, wa, br, br, wa, br, br, wa},
+//		{ ' ', wa, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, wa },
+//		{ ' ', wa, br, br, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, br, br, wa },
+//		{ ' ', wa, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, wa },
+//		{ ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa }
+//
+//	};
+//}

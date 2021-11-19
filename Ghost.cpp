@@ -37,7 +37,7 @@ void Ghost::setGhost(Point p, Board& board) {
 //--------Methods------------------------------------//
 
 void Ghost::moveGhost(Board& board) {
-	next_point = curr_point;
+	prev_point = next_point = curr_point;
 	next_point.move();
 	unsigned char readVal = board.getCell(next_point);
 	if(isEndBoard())

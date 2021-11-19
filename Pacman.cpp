@@ -2,7 +2,7 @@
 
 //--------Constructors---------------------------------//
 Pacman::Pacman() {
-	curr_point.setPoint(1,6);
+	curr_point.setPoint(2,9);
 	shape = (char)PACMAN;
 	color = YELLOW;
 	v = STAY;
@@ -25,8 +25,10 @@ void Pacman::initPacman(Point _p) {
 }
 
 void Pacman::setPacman(Point p) {
+	curr_point.draw(' ');
 	curr_point.setPoint(p.getX(), p.getY());
 	prev_point = curr_point;
+	next_point = curr_point;
 	v = STAY;
 	printPacman();
 }

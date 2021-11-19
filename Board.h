@@ -3,9 +3,9 @@
 
 #include "Point.h"
 
-#define WIDTH 34
-#define HEIGHT 12
-#define MAX_SCORE 180
+#define WIDTH 43 //34
+#define HEIGHT 17 //12
+#define MAX_SCORE 300 //180
 
 
 class Board {
@@ -13,18 +13,22 @@ class Board {
 	unsigned char board[HEIGHT][WIDTH] =
 	{
 		{' '},
-		{ ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa},
-		{ ' ', wa, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, wa },
-		{ ' ', wa, br, br, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, br, br, wa },
-		{ ' ', wa, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, wa },
-		{ ' ', wa, br, br, wa, br, br, wa, wa, wa, br, br, wa, wa, ' ', ' ', ' ', ' ', ' ', ' ',  wa, wa, br, br, wa, wa, wa, br, br, wa, br, br, wa },
-		{ ' ', ' ', br, br ,br, br, br, br, br, br, br, br, wa, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', wa, br, br, br, br, br, br, br, br, br, br,' ',' '},
-		{ ' ', wa, br, br, wa, br, br, wa, wa, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, wa, wa, br, br, wa, br, br, wa},
-		{ ' ', wa, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, wa },
-		{ ' ', wa, br, br, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, br, br, wa },
-		{ ' ', wa, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, wa },
-		{ ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa }
-
+		{' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa },
+		{' ', wa, wa, br, br, br, br, br, br, br, br, wa, wa, br, br, br, br, br, br, wa, wa, ' ', ' ', wa, wa, br, br, br, br, br, br, wa, wa, br, br, br, br, br, br, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa, br, br, wa, wa, br, br, wa, wa, ' ', ' ', wa, wa, br, br, wa, wa, br, br, wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa, br, br, wa, wa, br, br, br, br, br, br, br, br, br, br, wa, wa, br, br, wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, br, br, br, br, wa, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, wa, br, br, br, br, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, br, br, br, br, wa, wa, br, br, br, wa, wa, wa, ' ', ' ', ' ', ' ', ' ', ' ', wa, wa, wa, br, br, br, wa, wa, br, br, br, br, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, br, br, br, br, br, wa, wa, wa, wa, br, br, wa, wa, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', wa, wa, br, br, wa, wa, wa, wa, br, br, br, br, br, br, br, wa, wa },
+		{' ', ' ', ' ', br, br, br, br, br, br, br, br, br, br, br, br, br, wa, wa, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', wa, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, ' ', ' ' },
+		{' ', wa, wa, br, br, wa, wa, br, br, br, wa, wa, wa, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, wa, wa, wa, br, br, br, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, br, br, br, br, wa, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, wa, br, br, br, br, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa, br, br, wa, wa,' ', ' ', 'P','a','c','M','a','n',' ', ' ', wa, wa, br, br, wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, wa, br, br, wa, wa, wa, wa, br, br, wa, wa },
+		{' ', wa, wa, br, br, br, br, br, br, br, br, wa, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, wa, br, br, br, br, br, br, br, br, wa, wa },
+		{' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa }
 	};
 	/*unsigned char** board;*/
 public:
@@ -36,6 +40,65 @@ public:
 };
 
 #endif
+
+
+
+//{
+//{' '},
+//{' ', wa, wa, wa, wa, wa, 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', ' ', ' ', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa' },
+//{' ', 'wa', 'wa', br, br, br, br, br, br, br, br, 'wa', 'wa', br, br, br, br, 'br', 'br', 'wa', 'wa', ' ', ' ', 'wa', 'wa', 'br', 'br', 'br', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'wa', 'wa' },
+//{' ', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa', ' ', ' ', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa' },
+//{' ', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa' },
+//{' ', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa' },
+//{' ', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa' },
+//{' ', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'wa', 'wa', 'wa', ' ', ' ', ' ', ' ', ' ', ' ', 'wa', 'wa', 'wa', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa' },
+//{' ', 'wa', 'wa', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'wa', 'wa' },
+//{' ', ' ', ' ', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'wa', 'wa', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'wa', 'wa', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', ' ', ' ' },
+//{' ', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa' },
+//{' ', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa' },
+//{' ', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa' },
+//{' ', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', ' ', PacMan' ', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa' },
+//{' ', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'br', 'br', 'wa', 'wa', 'wa', 'wa', 'br', 'br', 'wa', 'wa' },
+//{' ', 'wa', 'wa', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'wa', 'wa', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'br', 'wa', 'wa' },
+//{' ', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', ' ', ' ', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', 'wa' }
+
+//};
+// ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
+// ▓▓········▓▓··················▓▓········▓▓",
+// ▓▓··▓▓▓▓··▓▓··▓▓▓▓▓▓▓▓▓▓▓▓▓▓··▓▓··▓▓▓▓··▓▓",
+// ▓▓··▓▓▓▓··▓▓··▓▓▓▓▓▓▓▓▓▓▓▓▓▓··▓▓··▓▓▓▓··▓▓",
+// ▓▓··▓▓····▓▓··▓▓▓▓▓▓▓▓▓▓▓▓▓▓··▓▓····▓▓··▓▓",
+// ▓▓··▓▓······························▓▓··▓▓
+// ▓▓··▓▓····▓▓··················▓▓····▓▓··▓▓
+// ▓▓·······▓▓▓▓··▓▓▓      ▓▓▓··▓▓▓▓·······▓▓",
+//   ·············▓▓        ▓▓·············  ",
+// ▓▓··▓▓···▓▓▓▓··▓▓▓▓▓▓▓▓▓▓▓▓··▓▓▓▓···▓▓··▓▓",
+// ▓▓··▓▓······························▓▓··▓▓      
+// ▓▓··▓▓····▓▓··▓▓▓▓▓▓▓▓▓▓▓▓▓▓··▓▓····▓▓··▓▓",
+// ▓▓··▓▓▓▓··▓▓··▓▓▓ PacMan ▓▓▓··▓▓··▓▓▓▓··▓▓",
+// ▓▓··▓▓▓▓··▓▓··▓▓▓▓▓▓▓▓▓▓▓▓▓▓··▓▓··▓▓▓▓··▓▓",
+// ▓▓········▓▓··················▓▓········▓▓",
+// ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"
+
+//{' '},
+// 01234567890123456789012345678901234567890123456789 = 42 * 17
+//{ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓}
+//{ ▓▓········▓▓······▓▓  ▓▓······▓▓········▓▓}
+//{ ▓▓··▓▓▓▓··▓▓··▓▓··▓▓  ▓▓··▓▓··▓▓··▓▓▓▓··▓▓}
+//{ ▓▓··▓▓▓▓··▓▓··▓▓··········▓▓··▓▓··▓▓▓▓··▓▓}
+//{ ▓▓··▓▓····▓▓··▓▓▓▓▓▓▓▓▓▓▓▓▓▓··▓▓····▓▓··▓▓}
+//{ ▓▓··▓▓······························▓▓··▓▓}
+//{ ▓▓··▓▓····▓▓···▓▓▓      ▓▓▓···▓▓····▓▓··▓▓}
+//{ ▓▓·······▓▓▓▓··▓▓        ▓▓··▓▓▓▓·······▓▓}
+//{   ·············▓▓        ▓▓·············  }10,21,22
+//{ ▓▓··▓▓···▓▓▓▓··▓▓▓▓▓▓▓▓▓▓▓▓··▓▓▓▓···▓▓··▓▓}
+//{ ▓▓··▓▓······························▓▓··▓▓}
+//{ ▓▓··▓▓····▓▓··▓▓▓▓▓▓▓▓▓▓▓▓▓▓··▓▓····▓▓··▓▓}
+//{ ▓▓··▓▓▓▓··▓▓··▓▓▓ PacMan ▓▓▓··▓▓··▓▓▓▓··▓▓}
+//{ ▓▓··▓▓▓▓··▓▓··▓▓▓▓▓▓▓▓▓▓▓▓▓▓··▓▓··▓▓▓▓··▓▓}
+//{ ▓▓········▓▓··················▓▓········▓▓}
+//{ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓}
+
 
 // 01234567890123456789012345678901
 //{
@@ -51,4 +114,15 @@ public:
 //"▓·······▓··············▓·······▓",
 //"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"
 //};
-
+//{' '},
+//{ ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa },
+//{ ' ', wa, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, wa },
+//{ ' ', wa, br, br, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, br, br, wa },
+//{ ' ', wa, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, wa },
+//{ ' ', wa, br, br, wa, br, br, wa, wa, wa, br, br, wa, wa, ' ', ' ', ' ', ' ', ' ', ' ',  wa, wa, br, br, wa, wa, wa, br, br, wa, br, br, wa },
+//{ ' ', ' ', br, br ,br, br, br, br, br, br, br, br, wa, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', wa, br, br, br, br, br, br, br, br, br, br,' ',' ' },
+//{ ' ', wa, br, br, wa, br, br, wa, wa, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, wa, wa, br, br, wa, br, br, wa },
+//{ ' ', wa, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, wa },
+//{ ' ', wa, br, br, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, br, br, wa, br, br, wa, wa, wa, br, br, wa },
+//{ ' ', wa, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, br, br, br, br, br, br, br, wa, br, br, br, br, br, br, br, wa },
+//{ ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, ' ', ' ', wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa, wa }

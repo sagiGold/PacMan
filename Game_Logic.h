@@ -1,19 +1,19 @@
 #ifndef GAME_LOGIC_H__
 #define GAME_LOGIC_H_
+
+#include "io_utils.h"
+#include "Pacman.h"
 #include "Point.h"
 #include "Color.h"
 #include "Board.h"
-#include "Pacman.h"
 #include "Ghost.h"
-#include "io_utils.h"
 
-
+//enum Shape { PACMAN = '@', GHOST = '&', BREAD = 250, WALL = 178 }; // Move to Game_Logic.h
 
 class Game_Logic
 {
-	//enum Shape { PACMAN = '@', GHOST = '&', BREAD = 250, WALL = 178 };
 public:
-	static constexpr char PACMAN = '@';
+	//static constexpr char PACMAN = '@';
 private:
 	Board board;
 	Pacman pacman;
@@ -40,7 +40,7 @@ private:
 		void printExit();
 		void printMenu();
 private:
-		bool collion();
+		bool collision();
 };
 
 #endif

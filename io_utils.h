@@ -12,7 +12,7 @@ using std::endl;
 using std::flush;
 using std::string;
 
-enum Shape {PACMAN = '@',GHOST = '&', BREAD = 250, WALL = 178};
+enum Shape {PACMAN = '@',GHOST = '&', BREAD = 250, WALL = 178}; // Move to Game_Logic.h
 
 void gotoxy(int x, int y);
 void setTextColor(Color);

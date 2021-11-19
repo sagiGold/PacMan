@@ -5,15 +5,15 @@
 	* Change Keys b4 serving project (W,A,D,X,S)
 	* Game_Logic::run() -> fix overload on stack
 	* Change _getc in winGame()&isGameOver() to cin :
-	* while playing player hits keyboard a lot and often misses win/lost messages
-	* Two main bugs: sometimes pacman get threw ghost + ghots still pooping extra breadcrumbs
-	* Move getInput() to io_utils.cpp
+	  while playing player hits keyboard a lot and often misses win/lose messages. maybe add change to menu when pressing \n 
+	* pacman get threw ghost
+	* 
 */
 
 Game_Logic::Game_Logic() {
 	black_and_white = true;
-	ghost1.setGhost(Point(16, 5), board);
-	ghost2.setGhost(Point(15, 5), board);
+	ghost1.setGhost(Point(21, 9), board);
+	ghost2.setGhost(Point(22, 9), board);
 }
 
 void Game_Logic::runGame() {
@@ -66,7 +66,15 @@ void Game_Logic::run()
 			}
 			slowTheGhost++;
 		}
-		
+		//else {
+		//	setTextColor(Color::WHITE);
+		//	gotoxy(0, HEIGHT + 3);
+		//	cout << "You paused the game";
+		//	Sleep(600);
+		//	cout << "\33[2K" << endl; // erase line from console
+		//}
+			
+
 		isGameOver(didILose);
 		if (!didILose) {
 			board.printData(pacman.getScore(), pacman.getLife());
@@ -80,25 +88,25 @@ void Game_Logic::run()
 
 void Game_Logic::isGameOver(bool& flag) {
 	//if (pacman.getPacman().isSamePoint(ghost1.getGhost()) || pacman.getPacman().isSamePoint(ghost2.getGhost())) {
-	if (collion()) {
+	if (collision()) {
 		pacman.setLife(pacman.getLife()-1);
 		if (pacman.getLife() <= 0) {
 			gameOver();
 			flag = !flag;
 		}
 		else {
-			pacman.setPacman(Point(1, 6));
-			ghost1.setGhost(Point(16, 6), board);
-			ghost2.setGhost(Point(15, 6), board);
+			pacman.setPacman(Point(2, 9));
+			ghost1.setGhost(Point(21, 9), board);
+			ghost2.setGhost(Point(22, 9), board);
 		}
 	}
 }
 
-bool Game_Logic::collion() {
+bool Game_Logic::collision() {
 	return (pacman.getPacman().isSamePoint(ghost1.getGhost()) ||
 		pacman.getPacman().isSamePoint(ghost2.getGhost()) ||
-		pacman.getPacmanPrev().isSamePoint(ghost1.getGhost()) ||
-		pacman.getPacmanPrev().isSamePoint(ghost2.getGhost()));
+		pacman.getPacmanPrev().isSamePoint(ghost1.getGhostPrev()) ||
+		pacman.getPacmanPrev().isSamePoint(ghost2.getGhostPrev()));
 }
 
 void Game_Logic::gameOver()
@@ -117,7 +125,7 @@ void Game_Logic::gameOver()
         | | | |  | | / /   |  __|   |  _   /
         | |_| |  | |/ /    | |____  | | \  \
         \_____/  |___/     |______| |_|  \__\ */
-	string s = "   _____      ___       ___  ___   _______ \n  /  ___|    /   |     /   |/   | |   ____| \n  | |       /    |    / /|   /| | |  |__ \n  | |  _   /  /| |   / / |__/ | | |   __| \n  | |_| | /  ___ |  / /       | | |  |____ \n  \\_____//_/   |_| /_/        |_| |_______| \n\n   _____    _     _   ______   ______ \n  /  _  \\  | |   / / | _____| |  _   \\ \n  | | | |  | |  / /  | |__    | |_|  | \n  | | | |  | | / /   |  __|   |  _   / \n  | |_| |  | |/ /    | |____  | | \\  \\ \n  \\_____/  |___/     |______| |_|  \\__\\  \n\n\n\nPress any key to return the menu\n";
+	string s = "   _____      ___       ___  ___   _______ \n  /  ___|    /   |     /   |/   | |   ____| \n  | |       /    |    / /|   /| | |  |__ \n  | |  _   /  /| |   / / |__/ | | |   __| \n  | |_| | /  ___ |  / /       | | |  |____ \n  \\_____//_/   |_| /_/        |_| |_______| \n\n   _____    _     _   ______   ______ \n  /  _  \\  | |   / / | _____| |  _   \\ \n  | | | |  | |  / /  | |__    | |_|  | \n  | | | |  | | / /   |  __|   |  _   / \n  | |_| |  | |/ /    | |____  | | \\  \\ \n  \\_____/  |___/     |______| |_|  \\__\\  \n\nPress any key to return the menu\n";
 
 	resetGame(s);
 }
@@ -146,9 +154,9 @@ void Game_Logic::resetGame(string s){
 	system("cls");
 
 	board.initBoard();
-	pacman.initPacman(Point(1, 6));
-	ghost1.setGhost(Point(16, 6), board);
-	ghost2.setGhost(Point(15, 6), board);
+	pacman.initPacman(Point(2, 9));
+	ghost1.setGhost(Point(21, 9), board);
+	ghost2.setGhost(Point(22, 9), board);
 	//runGame();
 }
 
@@ -214,7 +222,7 @@ void Game_Logic::printMenu() {
 
 void Game_Logic::printInstractions() {
 	system("cls");
-	cout << "Welcome to Pacman !" << endl << "Your goal is to move the pacman on the screen and eat the breadcrumbs." << endl
+	cout << "\nWelcome to Pacman !" << endl << "Your goal is to move the pacman on the screen and eat the breadcrumbs." << endl
 		<< "Each eaten breadcrumb equals a point to be earned." << endl
 		<< "Once all breadcrumbs on screen are eaten you win the game :)\n" << endl
 		<< "Keys for the game:" << endl
@@ -224,7 +232,7 @@ void Game_Logic::printInstractions() {
 		<< "DOWN -> x or X" << endl
 		<< "STAY -> s or S" << endl
 		<< "ESC -> Pause" << endl << endl
-		<< "Press any key to return to the menu." << endl;
+		<< "Press any key to return the menu." << endl;
 	_getch();
 	system("cls");
 }
