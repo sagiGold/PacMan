@@ -5,6 +5,8 @@
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
+#include <ctime>
+
 
 using std::cout;
 using std::cin; 

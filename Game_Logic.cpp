@@ -75,7 +75,7 @@ void Game_Logic::run()
 		isGameOver(didILose);
 		if (!didILose) {
 			board.printData(pacman.getScore(), pacman.getLife());
-			Sleep(30);
+			Sleep(100);
 		}
 	}
 	if(!didILose)
