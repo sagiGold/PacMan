@@ -31,6 +31,7 @@ void Point::move() {
 	move(dir);
 }
 
+
 void Point::move(int dir) {
 	switch (dir) {
 	case 0: // UP

@@ -35,22 +35,20 @@ void Pacman::setPacman(Point p) {
 
 //--------Methods------------------------------------//
 
-void Pacman::movePacman(Board &board) {
+void Pacman::movePacman(Board& board) {
 	if (v != STAY) {
 		prev_point = curr_point;
 		next_point = curr_point;
 		next_point.move(v);
 		isEndBoard();
-		unsigned char readVal = board.getCell(next_point);
-		switch (readVal) {
-			case (unsigned char)WALL:
-				v = STAY;
-				return;
-			case (unsigned char)BREAD:
-				score++;
-				break;
-			default:
-				break;
+		unsigned char readCurrVal = board.getCell(curr_point);
+		unsigned char readNextVal = board.getCell(next_point);
+		if (readCurrVal == (unsigned char)BREAD) {
+			score++;
+		}
+		if (readNextVal == (unsigned char)WALL) {
+			v = STAY;
+			next_point = curr_point;
 		}
 		curr_point.draw(' ');
 		board.editCell(curr_point, ' ');
@@ -58,6 +56,30 @@ void Pacman::movePacman(Board &board) {
 		printPacman();
 	}
 }
+
+//void Pacman::movePacman(Board &board) {
+//	if (v != STAY) {
+//		prev_point = curr_point;
+//		next_point = curr_point;
+//		next_point.move(v);
+//		isEndBoard();
+//		unsigned char readVal = board.getCell(next_point);
+//		switch (readVal) {
+//			case (unsigned char)WALL:
+//				v = STAY;
+//				return;
+//			case (unsigned char)BREAD:
+//				score++;
+//				break;
+//			default:
+//				break;
+//		}
+//		curr_point.draw(' ');
+//		board.editCell(curr_point, ' ');
+//		curr_point = next_point;
+//		printPacman();
+//	}
+//}
 
 void Pacman::printPacman() {
 	setTextColor(color);

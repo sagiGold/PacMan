@@ -1,17 +1,10 @@
 #include "Game_Logic.h"
 
 /*TODO:
-	* indicate in readme.txt file all bonus additions
-	* Change Keys b4 serving project (W,A,D,X,S)
-	* Game_Logic::run() -> fix overload on stack
-	* Change _getc in winGame()&isGameOver() to cin :
-	  while playing player hits keyboard a lot and often misses win/lose messages. maybe add change to menu when pressing \n 
-	* pacman get threw ghost
 	* 
 */
 
 Game_Logic::Game_Logic() {
-	//wf
 	std::srand(std::time(nullptr));
 	black_and_white = true;
 	ghost1.setGhost(Point(20, 9), board);
@@ -84,7 +77,6 @@ void Game_Logic::run()
 }
 
 void Game_Logic::isGameOver(bool& flag) {
-	//if (pacman.getPacman().isSamePoint(ghost1.getGhost()) || pacman.getPacman().isSamePoint(ghost2.getGhost())) {
 	if (collision()) {
 		pacman.setLife(pacman.getLife()-1);
 		if (pacman.getLife() <= 0) {
@@ -159,22 +151,24 @@ void Game_Logic::resetGame(string s){
 
 void Game_Logic::getInput(bool& flag) {
 	int s;
-	Move_Vector dir = STAY;
+	Move_Vector dir;
 	if (_kbhit()) {
 		s = _getch();
 		if (s == 27) // Pause game if user presses ESC  
 			flag = !flag;
-		if (s == 'w' || s == 'W')
-			dir = UP;
-		if (s == 'a' || s == 'A')
-			dir = LEFT;
-		if (s == 'd' || s == 'D')
-			dir = RIGHT;
-		if (s == 's' || s == 'S')
-			dir = DOWN;
-		if (s == ' ')
-			dir = STAY;
-		pacman.setVector(dir);
+		else {
+			if (s == 'w' || s == 'W')
+				dir = UP;
+			if (s == 'a' || s == 'A')
+				dir = LEFT;
+			if (s == 'd' || s == 'D')
+				dir = RIGHT;
+			if (s == 'x' || s == 'X')
+				dir = DOWN;
+			if (s == 's' || s == 'S')
+				dir = STAY;
+			pacman.setVector(dir);
+		}
 	}
 }
 
@@ -250,7 +244,7 @@ void Game_Logic::printExit() {
 void Game_Logic::printGamePause() {
 	setTextColor(Color::WHITE);
 	gotoxy(0, HEIGHT + 3);
-	cout << "You paused the game";
+	cout << "Game paused, press ESC again to continue";
 	Sleep(600);
 	cout << "\33[2K" << endl; // erase line from console
 	Sleep(200);
