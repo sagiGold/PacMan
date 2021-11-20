@@ -13,6 +13,9 @@ class Pacman {
 	int score;
 	int life;
 
+	Point next_point;
+	Point prev_point;
+
 	public:
 		//constructors
 		Pacman();
@@ -37,8 +40,7 @@ class Pacman {
 
 	private:
 		void isEndBoard();
-		Point next_point;
-		Point prev_point;
+
 };
 
 #endif 
