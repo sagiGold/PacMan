@@ -11,6 +11,7 @@
 */
 
 Game_Logic::Game_Logic() {
+	//wf
 	std::srand(std::time(nullptr));
 	black_and_white = true;
 	ghost1.setGhost(Point(20, 9), board);
