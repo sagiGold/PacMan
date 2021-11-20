@@ -18,6 +18,7 @@ Game_Logic::Game_Logic() {
 
 void Game_Logic::runGame() {
 	char choice;
+	ShowConsoleCursor(false); //hiding console cursor
 	while (true)
 	{
 		choice = menu();
@@ -66,14 +67,8 @@ void Game_Logic::run()
 			}
 			slowTheGhost++;
 		}
-		//else {
-		//	setTextColor(Color::WHITE);
-		//	gotoxy(0, HEIGHT + 3);
-		//	cout << "You paused the game";
-		//	Sleep(600);
-		//	cout << "\33[2K" << endl; // erase line from console
-		//}
-			
+		else
+			printGamePause();			
 
 		isGameOver(didILose);
 		if (!didILose) {
@@ -125,7 +120,7 @@ void Game_Logic::gameOver()
         | | | |  | | / /   |  __|   |  _   /
         | |_| |  | |/ /    | |____  | | \  \
         \_____/  |___/     |______| |_|  \__\ */
-	string s = "   _____      ___       ___  ___   _______ \n  /  ___|    /   |     /   |/   | |   ____| \n  | |       /    |    / /|   /| | |  |__ \n  | |  _   /  /| |   / / |__/ | | |   __| \n  | |_| | /  ___ |  / /       | | |  |____ \n  \\_____//_/   |_| /_/        |_| |_______| \n\n   _____    _     _   ______   ______ \n  /  _  \\  | |   / / | _____| |  _   \\ \n  | | | |  | |  / /  | |__    | |_|  | \n  | | | |  | | / /   |  __|   |  _   / \n  | |_| |  | |/ /    | |____  | | \\  \\ \n  \\_____/  |___/     |______| |_|  \\__\\  \n\nPress any key to return the menu\n";
+	string s = "   _____      ___       ___  ___   _______ \n  /  ___|    /   |     /   |/   | |   ____| \n  | |       /    |    / /|   /| | |  |__ \n  | |  _   /  /| |   / / |__/ | | |   __| \n  | |_| | /  ___ |  / /       | | |  |____ \n  \\_____//_/   |_| /_/        |_| |_______| \n\n   _____    _     _   ______   ______ \n  /  _  \\  | |   / / | _____| |  _   \\ \n  | | | |  | |  / /  | |__    | |_|  | \n  | | | |  | | / /   |  __|   |  _   / \n  | |_| |  | |/ /    | |____  | | \\  \\ \n  \\_____/  |___/     |______| |_|  \\__\\  \n\n\tPress any key to return to the menu\n";
 
 	resetGame(s);
 }
@@ -138,7 +133,7 @@ void Game_Logic::winGame(){
 		  \   /| |  | | |  | |   \ \/  \/ /   | | | . ` |
 		   | | | |__| | |__| |    \  /\  /   _| |_| |\  |
 		   |_|  \____/ \____/      \/  \/   |_____|_| \_|*/
-	string s = " __     ______  _    _  __          _______ _   _\n \\ \\   / / __ \\| |  | | \\ \\        / /_   _| \\ | |\n  \\ \\_/ / |  | | |  | |  \\ \\  /\\  / /  | | |  \\| |\n   \\   /| |  | | |  | |   \\ \\/  \\/ /   | | | . ` |\n    | | | |__| | |__| |    \\  /\\  /   _| |_| |\\  |\n    |_|  \\____/ \\____/      \\/  \\/   |_____|_| \\_|\n\nPress any key to return the menu\n";
+	string s = " __     ______  _    _  __          _______ _   _\n \\ \\   / / __ \\| |  | | \\ \\        / /_   _| \\ | |\n  \\ \\_/ / |  | | |  | |  \\ \\  /\\  / /  | | |  \\| |\n   \\   /| |  | | |  | |   \\ \\/  \\/ /   | | | . ` |\n    | | | |__| | |__| |    \\  /\\  /   _| |_| |\\  |\n    |_|  \\____/ \\____/      \\/  \\/   |_____|_| \\_|\n\n\tPress any key to return to the menu\n";
 
 	resetGame(s);
 }
@@ -225,14 +220,14 @@ void Game_Logic::printInstractions() {
 	cout << "\nWelcome to Pacman !" << endl << "Your goal is to move the pacman on the screen and eat the breadcrumbs." << endl
 		<< "Each eaten breadcrumb equals a point to be earned." << endl
 		<< "Once all breadcrumbs on screen are eaten you win the game :)\n" << endl
-		<< "Keys for the game:" << endl
+		<< "Keys for the game (make sure to use english keyboard!) :" << endl
 		<< "LEFT -> a or A" << endl
 		<< "RIGHT -> d or D" << endl
 		<< "UP -> w or W" << endl
 		<< "DOWN -> x or X" << endl
 		<< "STAY -> s or S" << endl
 		<< "ESC -> Pause" << endl << endl
-		<< "Press any key to return the menu." << endl;
+		<< "Press any key to return to the menu" << endl;
 	_getch();
 	system("cls");
 }
@@ -248,4 +243,13 @@ void Game_Logic::printExit() {
 		<< "  \\        /            |         |	   " << endl
 		<< "   \\______/             |/vvvvvvv\\|      " << endl
 		<< "\n             GOOD BYE     \n";
+}
+
+void Game_Logic::printGamePause() {
+	setTextColor(Color::WHITE);
+	gotoxy(0, HEIGHT + 3);
+	cout << "You paused the game";
+	Sleep(600);
+	cout << "\33[2K" << endl; // erase line from console
+	Sleep(200);
 }

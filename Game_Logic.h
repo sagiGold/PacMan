@@ -39,6 +39,8 @@ private:
 		void resetGame(string s);
 		void printExit();
 		void printMenu();
+		void printGamePause();
+
 private:
 		bool collision();
 };

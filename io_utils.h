@@ -19,5 +19,6 @@ void setTextColor(Color);
 void hideCursor();
 void clear_screen();
 void printNewGame();
+void ShowConsoleCursor(bool showFlag);
 
 #endif
