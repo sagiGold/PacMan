@@ -12,8 +12,8 @@
 
 Game_Logic::Game_Logic() {
 	black_and_white = true;
-	ghost1.setGhost(Point(21, 9), board);
-	ghost2.setGhost(Point(22, 9), board);
+	ghost1.setGhost(Point(20, 9), board);
+	ghost2.setGhost(Point(23, 9), board);
 }
 
 void Game_Logic::runGame() {
@@ -73,7 +73,7 @@ void Game_Logic::run()
 		isGameOver(didILose);
 		if (!didILose) {
 			board.printData(pacman.getScore(), pacman.getLife());
-			Sleep(100);
+			Sleep(30);
 		}
 	}
 	if(!didILose)

@@ -3,7 +3,9 @@
 
 #include "io_utils.h"
 
-enum Move_Vector { UP , DOWN , LEFT , RIGHT , STAY };
+//enum Move_Vector { UP , DOWN , LEFT , RIGHT , STAY };
+enum Move_Vector { UP, RIGHT, DOWN, LEFT, STAY };
+
 
 class Point {
 	int x, y;

@@ -36,14 +36,14 @@ void Point::move(int dir) {
 	case 0: // UP
 		--y;
 		break;
-	case 1: // DOWN
+	case 1: // RIGHT
+		++x;
+		break;
+	case 2: // DOWN
 		++y;
 		break;
-	case 2: // LEFT
+	case 3: // LEFT
 		--x;
-		break;
-	case 3: // RIGHT
-		++x;
 		break;
 	}
 }

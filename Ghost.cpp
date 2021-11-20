@@ -6,14 +6,17 @@ Ghost::Ghost() {
 	curr_point.setPoint(16,5);
 	color = RED;
 	shape = (char)GHOST;
-	v = STAY;
+	v = UP;
+	move_cntr = 0;
+
 }
 
 Ghost::Ghost(Point _p, Color c) {
 	curr_point.setPoint(_p.getX(), _p.getY());
 	color = c;
 	shape = (char)GHOST;
-	v = STAY;
+	v = UP;
+	move_cntr = 0;
 }
 
 //--------Getters and Setters---------------------------//
@@ -38,14 +41,25 @@ void Ghost::setGhost(Point p, Board& board) {
 
 void Ghost::moveGhost(Board& board) {
 	prev_point = next_point = curr_point;
-	next_point.move();
-	unsigned char readVal = board.getCell(next_point);
-	if(isEndBoard())
-		return;
-	if (readVal == (unsigned char)WALL) {
-		v = STAY;
-		return;
+	if (move_cntr == 20) {
+		next_point.move();
+		move_cntr = 0;
 	}
+	else
+		next_point.move(v);
+
+	unsigned char readVal = board.getCell(next_point);
+	while (isEndBoard() || readVal == (unsigned char)WALL)
+	 {
+		 v = (Move_Vector)(v + 1);
+		 if (v >= STAY)
+			 v = UP;
+		 next_point = curr_point;
+		 next_point.move(v);
+		 readVal = board.getCell(next_point);
+	 }
+
+	move_cntr++;
 	setTextColor(Color::LIGHTGREY);
 	curr_point.draw(board.getCell(curr_point));
 	curr_point = next_point;
@@ -58,10 +72,11 @@ void Ghost::printGhost() {
 }
 
 bool Ghost::isEndBoard() {
-	if (next_point.getX() > WIDTH - 2 || next_point.getX() < 1 || next_point.getY() > HEIGHT-1 || next_point.getY() < 1)
-	{
-		v = STAY;
-		return true;
-	}
-	return false;
+	/*if*/ return (next_point.getX() > WIDTH - 2 || next_point.getX() < 1 || next_point.getY() > HEIGHT - 1 || next_point.getY() < 1)
+
+		;//	{
+//		v = STAY;
+//		return true;
+//	}
+//	return false;
 }

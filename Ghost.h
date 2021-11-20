@@ -27,6 +27,7 @@ public:
 	void setColor(Color c) {color = c;}
 
 private:
+	int move_cntr;
 	Point next_point;
 	Point prev_point;
 
