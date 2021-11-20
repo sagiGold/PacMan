@@ -21,7 +21,7 @@ Ghost::Ghost(Point _p, Color c) {
 
 //--------Getters and Setters---------------------------//
 
-void Ghost::setGhost(Point p, Board& board) {
+void Ghost::setGhost(Point p, Board & board) {
 	prev_point = curr_point;
 	unsigned char readVal = board.getCell(curr_point);
 	switch (readVal) {
@@ -78,11 +78,5 @@ void Ghost::printGhost() {
 }
 
 bool Ghost::isEndBoard() {
-	/*if*/ return (next_point.getX() > WIDTH - 2 || next_point.getX() < 1 || next_point.getY() > HEIGHT - 1 || next_point.getY() < 1)
-
-		;//	{
-//		v = STAY;
-//		return true;
-//	}
-//	return false;
+	return (next_point.getX() > WIDTH - 2 || next_point.getX() < 1 || next_point.getY() > HEIGHT - 1 || next_point.getY() < 1);
 }

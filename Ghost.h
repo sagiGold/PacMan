@@ -16,7 +16,7 @@ public:
 	Ghost(Point _p, Color c);
 
 	//setters and getters
-	void setGhost(Point p, Board& board);
+	void setGhost(Point p, Board & board);
 	Point getGhost() { return curr_point; }
 	Point getGhostPrev() { return prev_point; }
 
