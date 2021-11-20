@@ -155,14 +155,16 @@ void Game_Logic::getInput(bool& flag) {
 		else {
 			if (s == 'w' || s == 'W')
 				dir = UP;
-			if (s == 'a' || s == 'A')
+			else if (s == 'a' || s == 'A')
 				dir = LEFT;
-			if (s == 'd' || s == 'D')
+			else if (s == 'd' || s == 'D')
 				dir = RIGHT;
-			if (s == 'x' || s == 'X')
+			else if (s == 'x' || s == 'X')
 				dir = DOWN;
-			if (s == 's' || s == 'S')
+			else if (s == 's' || s == 'S')
 				dir = STAY;
+			else
+				return;
 			pacman.setVector(dir);
 		}
 	}
@@ -241,7 +243,7 @@ void Game_Logic::printGamePause() {
 	setTextColor(Color::WHITE);
 	gotoxy(0, HEIGHT + 3);
 	cout << "Game paused, press ESC again to continue";
-	Sleep(600);
+	Sleep(950);
 	cout << "\33[2K" << endl; // erase line from console
 	Sleep(200);
 }
