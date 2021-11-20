@@ -3,9 +3,7 @@
 
 #include "io_utils.h"
 
-//enum Move_Vector { UP , DOWN , LEFT , RIGHT , STAY };
 enum Move_Vector { UP, RIGHT, DOWN, LEFT, STAY };
-
 
 class Point {
 	int x, y;
@@ -20,7 +18,6 @@ public:
 	void move();
 	void move(int direction);
 	bool isSamePoint(const Point p1);
-	//friend bool operator== (Point& p1, Point& p2);
 };
 
 #endif

@@ -30,7 +30,6 @@ private:
 	int move_cntr;
 	Point next_point;
 	Point prev_point;
-
 	bool isEndBoard();
 };
 

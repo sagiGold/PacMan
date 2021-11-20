@@ -1,9 +1,5 @@
 #include "Game_Logic.h"
 
-/*TODO:
-	* 
-*/
-
 Game_Logic::Game_Logic() {
 	std::srand(std::time(nullptr));
 	black_and_white = true;

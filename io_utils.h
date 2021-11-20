@@ -7,13 +7,11 @@
 #include <conio.h>
 #include <ctime>
 
-
 using std::cout;
 using std::cin; 
 using std::endl;
 using std::flush;
 using std::string;
-
 
 void gotoxy(int x, int y);
 void setTextColor(Color);

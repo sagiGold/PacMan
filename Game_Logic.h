@@ -8,12 +8,8 @@
 #include "Board.h"
 #include "Ghost.h"
 
-//enum Shape { PACMAN = '@', GHOST = '&', BREAD = 250, WALL = 178 }; // Move to Game_Logic.h
+class Game_Logic {
 
-class Game_Logic
-{
-public:
-	//static constexpr char PACMAN = '@';
 private:
 	Board board;
 	Pacman pacman;

@@ -41,19 +41,3 @@ void ShowConsoleCursor(bool showFlag)
 	SetConsoleCursorInfo(out, &cursorInfo);
 }
 
-//
-//void printNewGame()
-//{
-//	/* num of bread crumbs is 170 */  
-//	cout << w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w endl
-//		 << w o o o o o o w o o o o o o o o o o o o o o w o o o o o o w endl
-//		 << w o w w w o o w o o w w w w w w w w w w o o w o o w w w o w endl
-//		 << w o w o o o o o o o o o o o o o o o o o o o o o o o o w o w endl
-//		 << w o w o o w w w o o w w "      " << w w o o w w w o o w o w endl
-//		 << ' ' << o o o o o o o o o w "        " << w o o o o o o o o ' ' << endl
-//		 << w o w o o w w w o o w w w w w w w w w w o o w w w o o w o w endl
-//		 << w o w o o o o o o o o o o o o o o o o o o o o o o o o w o w endl
-//		 << w o w w w o o w o o w w w w w w w w w w o o w o o w w w o w endl
-//		 << w o o o o o o w o o o o o o o o o o o o o o w o o o o o o w endl
-//		 << w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w endl;
-//}

@@ -57,30 +57,6 @@ void Pacman::movePacman(Board& board) {
 	}
 }
 
-//void Pacman::movePacman(Board &board) {
-//	if (v != STAY) {
-//		prev_point = curr_point;
-//		next_point = curr_point;
-//		next_point.move(v);
-//		isEndBoard();
-//		unsigned char readVal = board.getCell(next_point);
-//		switch (readVal) {
-//			case (unsigned char)WALL:
-//				v = STAY;
-//				return;
-//			case (unsigned char)BREAD:
-//				score++;
-//				break;
-//			default:
-//				break;
-//		}
-//		curr_point.draw(' ');
-//		board.editCell(curr_point, ' ');
-//		curr_point = next_point;
-//		printPacman();
-//	}
-//}
-
 void Pacman::printPacman() {
 	setTextColor(color);
 	curr_point.draw(shape);
