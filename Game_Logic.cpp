@@ -142,7 +142,6 @@ void Game_Logic::resetGame(string s){
 	pacman.initPacman(Point(2, 9));
 	ghost1.setGhost(Point(21, 9), board);
 	ghost2.setGhost(Point(22, 9), board);
-	//runGame();
 }
 
 void Game_Logic::getInput(bool& flag) {
