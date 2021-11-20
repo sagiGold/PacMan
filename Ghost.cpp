@@ -51,9 +51,15 @@ void Ghost::moveGhost(Board& board) {
 	unsigned char readVal = board.getCell(next_point);
 	while (isEndBoard() || readVal == (unsigned char)WALL)
 	 {
-		 v = (Move_Vector)(v + 1);
+		if(move_cntr%5==0)
+			v = (Move_Vector)(v - 1);
+		else
+			v = (Move_Vector)(v + 1);
+
 		 if (v >= STAY)
 			 v = UP;
+		 if (v < UP)
+			 v = DOWN;
 		 next_point = curr_point;
 		 next_point.move(v);
 		 readVal = board.getCell(next_point);
